@@ -1,4 +1,3 @@
-
 .cpu "65816"
 
   crossbankRawMissing   := 0
@@ -60,6 +59,7 @@ GUARD_FE4_BASEROM :?= false
 
 .include "LIB/LibraryHelpers.h"
 .include "LIB/IORegisters.h"
+.include "LIB/Save.h"
 .include "LIB/WRAM.inc"
 .include "LIB/Constants.inc"
 .include "LIB/Macros.inc"
@@ -74,8 +74,11 @@ GUARD_FE4_BASEROM :?= false
 .include "LIB/DMA.h"
 .include "LIB/HDMA.h"
 .include "LIB/PermanentFlags.h"
-
-
+.include "LIB/SRAM.h"
+.include "LIB/Dialogue.h"
+.include "ProjectASM/WRAMlover.inc"
+.include "ProjectASM/LoveStruct.h"
+ .include "ProjectASM/base_game_def.asm"
   ROM = binary("FE4.sfc")
 
 .include "MenuText/_MenuTextInstaller.asm"
@@ -83,9 +86,19 @@ GUARD_FE4_BASEROM :?= false
 .include "Graphics/_GraphicsInstaller.asm"
 .include "Dialogue/_DialogueTextInstaller.asm"
 .include "Fixes/_FixesInstaller.asm"
-
-
-
+  .include "EVENTS/ChapterPrologue.asm"
+  .include "EVENTS/Chapter01.asm"
+  .include "EVENTS/Chapter02.asm"
+  .include "EVENTS/Chapter03.asm"
+  .include "EVENTS/Chapter04.asm"
+  .include "EVENTS/Chapter05.asm"
+  .include "EVENTS/Chapter06.asm"
+  .include "EVENTS/Chapter07.asm"
+  .include "EVENTS/Chapter08.asm"
+  .include "EVENTS/Chapter09.asm"
+  .include "EVENTS/Chapter10.asm"
+  .include "EVENTS/ChapterFinal.asm"
+  .include "EVENTS/ChapterEpilogue.asm"
 
 
     * = $038000
@@ -167,9 +180,19 @@ GUARD_FE4_BASEROM :?= false
 
         ; 83/F7C4
 
-    .here
-
-
+          aLoveWLWBaseOffsets .include "Love_Table/LoveWLWBaseOffset.asm"                              ; 83/8738
+          aGen1WLWLoveBases .binclude "Love_Table/Gen1LoveBasesWLW.csv.asm"                                  ; 83/876A
+          aGen2WLWLoveBases .binclude "Love_Table/Gen2LoveBasesWLW.csv.asm"
+          aLoveMLMBaseOffsets .include "Love_Table/LoveMLMBaseOffset.asm"                              ; 83/8738
+          aGen1MLMLoveBases .binclude "Love_Table/Gen1LoveBasesMLM.csv.asm"                                  ; 83/876A
+          aGen2MLMLoveBases .binclude "Love_Table/Gen2LoveBasesMLM.csv.asm"
+          aLoveWLWGrowthOffsets .include "Love_Table/LoveWLWGrowthOffset.asm"                              ; 83/8738
+          aGen1WLWLoveGrowths .binclude "Love_Table/Gen1LoveGrowthsWLW.csv.asm"                                  ; 83/876A
+          aGen2WLWLoveGrowths .binclude "Love_Table/Gen2LoveGrowthsWLW.csv.asm"
+          aLoveMLMGrowthOffsets .include "Love_Table/LoveMLMGrowthOffset.asm"                              ; 83/8738
+          aGen1MLMLoveGrowths .binclude "Love_Table/Gen1LoveGrowthsMLM.csv.asm"                                  ; 83/876A
+          aGen2MLMLoveGrowths .binclude "Love_Table/Gen2LoveGrowthsMLM.csv.asm"
+          .here
     * = $08D365
     .logical $88D365
 
@@ -179,10 +202,6 @@ GUARD_FE4_BASEROM :?= false
       ; 88/D488
 
     .here
-
-
-
-
 
     * = $010000
     .logical $C10000
@@ -302,6 +321,8 @@ GUARD_FE4_BASEROM :?= false
 
     .here
 
+
+
     * = $060000
     .logical $C60000
 
@@ -321,6 +342,7 @@ GUARD_FE4_BASEROM :?= false
 
     .here
 
+
     * = $070000
     .logical $C70000
 
@@ -331,3 +353,766 @@ GUARD_FE4_BASEROM :?= false
       ; C7/0C6C
 
     .here
+
+     * = $06C739
+        .logical $86C739
+
+          aChapterEventPointers .include "TABLES/CHAPTER/ChapterEventPointers.csv.asm" ; 86/C739
+          aChapterEventDataPointers .include "TABLES/CHAPTER/ChapterEventDataPointers.csv.asm" ; 86/C760
+          aFactionGroupPointers .include "TABLES/CHAPTER/FactionGroupPointers.csv.asm" ; 86/C784
+
+          .dsection Chapter01EventsSection
+          .dsection Chapter01EventDataSection
+          .dsection Chapter02EventsSection
+          .dsection Chapter02EventDataSection
+          .dsection Chapter03EventsSection
+          .dsection Chapter03EventDataSection
+          .dsection Chapter04EventsSection
+          .dsection Chapter04EventDataSection
+          .dsection Chapter05EventsSection
+          .dsection Chapter05EventDataSection
+          .dsection Chapter07EventsSection
+          .dsection Chapter07EventDataSection
+          .dsection Chapter08EventsSection
+          .dsection Chapter08EventDataSection
+          .dsection Chapter09EventsSection
+          .dsection Chapter09EventDataSection
+          .dsection ChapterEpilogueEventsSection
+
+          .fill $868000 + $8000 - *, 0
+
+        .here
+        * = $01C000
+            .logical $81C000
+
+              aUNITGroupPointers                  .include "TABLES/EVENTUNIT/UNITGroupPointers.csv.asm"
+              aUNITGroupDataPrologueStart         .binclude "TABLES/EVENTUNIT/UNITGroupDataPrologueStart.csv.asm"
+              aUNITGroupDataPrologueEvans         .binclude "TABLES/EVENTUNIT/UNITGroupDataPrologueEvans.csv.asm"
+              aUNITGroupDataChapter01Start        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter01Start.csv.asm"
+              aUNITGroupDataChapter01Marpha       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter01Marpha.csv.asm"
+              aUNITGroupDataChapter01Heirhein     .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter01Heirhein.csv.asm"
+              aUNITGroupDataChapter01Nordion      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter01Nordion.csv.asm"
+              aUNITGroupDataChapter01Verdane      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter01Verdane.csv.asm"
+              aUNITGroupDataChapter01Brigands     .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter01Brigands.csv.asm"
+              aUNITGroupDataChapter02Start        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter02Start.csv.asm"
+              aUNITGroupDataChapter02Yellows      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter02Yellows.csv.asm"
+              aUNITGroupDataChapter02Infini       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter02Infini.csv.asm"
+              aUNITGroupDataChapter02Mackily      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter02Mackily.csv.asm"
+              aUNITGroupDataChapter02Agusti       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter02Agusti.csv.asm"
+              aUNITGroupDataChapter03Start        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter03Start.csv.asm"
+              aUNITGroupDataChapter03Sylvale      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter03Sylvale.csv.asm"
+              aUNITGroupDataChapter03Thracia      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter03Thracia.csv.asm"
+              aUNITGroupDataChapter03Orgahil      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter03Orgahil.csv.asm"
+              aUNITGroupDataChapter03DozelFriege  .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter03DozelFriege.csv.asm"
+              aUNITGroupDataChapter04Start        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter04Start.csv.asm"
+              aUNITGroupDataChapter04Donovan      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter04Donovan.csv.asm"
+              aUNITGroupDataChapter04Pamela       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter04Pamela.csv.asm"
+              aUNITGroupDataChapter04Annand       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter04Annand.csv.asm"
+              aUNITGroupDataChapter04Andrey       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter04Andrey.csv.asm"
+              aUNITGroupDataChapter04Zaxon        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter04Zaxon.csv.asm"
+              aUNITGroupDataChapter05Start        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter05Start.csv.asm"
+              aUNITGroupDataChapter05Leonster     .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter05Leonster.csv.asm"
+              aUNITGroupDataChapter05Phinora      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter05Phinora.csv.asm"
+              aUNITGroupDataChapter05Velthomer    .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter05Velthomer.csv.asm"
+              aUNITGroupDataChapter05Belhalla     .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter05Belhalla.csv.asm"
+              aUNITGroupDataChapter05Thracia      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter05Thracia.csv.asm"
+              aUNITGroupDataChapter06Start        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter06Start.csv.asm"
+              aUNITGroupDataChapter06Ganeishire   .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter06Ganeishire.csv.asm"
+              aUNITGroupDataChapter06Ribaut       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter06Ribaut.csv.asm"
+              aUNITGroupDataChapter07Start        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter07Start.csv.asm"
+              aUNITGroupDataChapter07Opening      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter07Opening.csv.asm"
+              aUNITGroupDataChapter07Melgen       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter07Melgen.csv.asm"
+              aUNITGroupDataChapter07Ulster       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter07Ulster.csv.asm"
+              aUNITGroupDataChapter08Start        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter08Start.csv.asm"
+              aUNITGroupDataChapter08Opening      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter08Opening.csv.asm"
+              aUNITGroupDataChapter08Meath        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter08Meath.csv.asm"
+              aUNITGroupDataChapter08Febail       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter08Febail.csv.asm"
+              aUNITGroupDataChapter09Start        .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter09Start.csv.asm"
+              aUNITGroupDataChapter09Opening      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter09Opening.csv.asm"
+              aUNITGroupDataChapter09Travant      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter09Travant.csv.asm"
+              aUNITGroupDataChapter09Grutia       .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter09Grutia.csv.asm"
+              aUNITGroupDataChapter09Thracia      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter09Thracia.csv.asm"
+              aUNITGroupDataChapter10Opening1     .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter10Opening1.csv.asm"
+              aUNITGroupDataChapter10Opening2     .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter10Opening2.csv.asm"
+              aUNITGroupDataChapter10Miletos      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter10Miletos.csv.asm"
+              aUNITGroupDataChapter10Chalphy      .binclude "TABLES/EVENTUNIT/UNITGroupDataChapter10Chalphy.csv.asm"
+              aUNITGroupDataChapterFinalOpening   .binclude "TABLES/EVENTUNIT/UNITGroupDataChapterFinalOpening.csv.asm"
+              aUNITGroupDataChapterFinalDozel     .binclude "TABLES/EVENTUNIT/UNITGroupDataChapterFinalDozel.csv.asm"
+              aUNITGroupDataChapterFinalYngvi     .binclude "TABLES/EVENTUNIT/UNITGroupDataChapterFinalYngvi.csv.asm"
+              aUNITGroupDataChapterFinalFriege    .binclude "TABLES/EVENTUNIT/UNITGroupDataChapterFinalFriege.csv.asm"
+              aUNITGroupDataChapterFinalVelthomer .binclude "TABLES/EVENTUNIT/UNITGroupDataChapterFinalVelthomer.csv.asm"
+              aUNITGroupDataChapterFinalBelhalla  .binclude "TABLES/EVENTUNIT/UNITGroupDataChapterFinalBelhalla.csv.asm"
+              aUNITGroupDataChapterFinalThracia   .binclude "TABLES/EVENTUNIT/UNITGroupDataChapterFinalThracia.csv.asm"
+              aUNITGroupDataChapterFinalUnused    .binclude "TABLES/EVENTUNIT/UNITGroupDataChapterFinalUnused.csv.asm"
+
+              ; 81ebbc
+            .here
+
+            * = $0D863F
+                .logical $8D863F
+
+                  .include "EVENTS/Chapter10/EventChapter10Opening.asm"
+                  .include "EVENTS/Chapter10/EventChapter10RiddellLeisurelyCharge.asm"
+                  .include "EVENTS/Chapter10/EventChapter10CivilianRescued1.asm"
+                  .include "EVENTS/Chapter10/EventChapter10CivilianRescued2.asm"
+                  .include "EVENTS/Chapter10/EventChapter10CivilianRescued3.asm"
+                  .include "EVENTS/Chapter10/EventChapter10CivilianRescued4.asm"
+                  .include "EVENTS/Chapter10/EventChapter10CivilianRescued5.asm"
+                  .include "EVENTS/Chapter10/EventChapter10CivilianRescued6.asm"
+                  .include "EVENTS/Chapter10/EventChapter10ChronosSeized.asm"
+                  .include "EVENTS/Chapter10/EventChapter10RadosSeized.asm"
+                  .include "EVENTS/Chapter10/EventChapter10MiletosSpawn.asm"
+                  .include "EVENTS/Chapter10/EventChapter10MiletosSeized.asm"
+                  .include "EVENTS/Chapter10/EventChapter10ChalphySpawn.asm"
+                  .include "EVENTS/Chapter10/EventChapter10SeliphPalmarchTalk.asm"
+                  .include "EVENTS/Chapter10/EventChapter10Ending.asm"
+                  .include "EVENTS/Chapter10/EventChapter10JuliusKilledUnit.asm"
+                  .include "EVENTS/Chapter10/EventChapter10IshtarKilledUnit.asm"
+                  .include "EVENTS/Chapter10/EventChapter10JuliusDied.asm"
+                  .include "EVENTS/Chapter10/EventChapter10IshtarDied.asm"
+                  .include "EVENTS/Chapter10/EventChapter10Village1.asm"
+                  .include "EVENTS/Chapter10/EventChapter10Village2.asm"
+                  .include "EVENTS/Chapter10/EventChapter10Village3.asm"
+                  .include "EVENTS/Chapter10/EventChapter10VillageMagicRing.asm"
+                  .include "EVENTS/Chapter10/EventChapter10Village4.asm"
+                  .include "EVENTS/Chapter10/EventChapter10Village5.asm"
+                  .include "EVENTS/Chapter10/EventChapter10HildaDied.asm"
+                  .include "EVENTS/Chapter10/EventChapter10_185.asm"
+                  .include "EVENTS/Chapter10/EventChapter10SeliphAtSea.asm"
+                  .include "EVENTS/Chapter10/EventChapter10_18A.asm"
+                    .here
+
+            * = $0dfc56
+                    .logical $8dfc56
+            aWorldMapEvents .binclude "TABLES/CHAPTER/WorldMapEvents.csv.asm"
+
+                  .include "EVENTS/ChapterPrologue/EventPrologueWorldMap.asm"
+                  .include "EVENTS/Chapter01/EventChapter01WorldMap.asm"
+                  .include "EVENTS/Chapter02/EventChapter02WorldMap.asm"
+                  .include "EVENTS/Chapter03/EventChapter03WorldMap.asm"
+                  .include "EVENTS/Chapter04/EventChapter04WorldMap.asm"
+                  .include "EVENTS/Chapter05/EventChapter05WorldMap.asm"
+                  .include "EVENTS/Chapter06/EventChapter06WorldMap.asm"
+                  .include "EVENTS/Chapter07/EventChapter07WorldMap.asm"
+                  .include "EVENTS/Chapter08/EventChapter08WorldMap.asm"
+                  .include "EVENTS/Chapter09/EventChapter09WorldMap.asm"
+                  .include "EVENTS/Chapter10/EventChapter10WorldMap.asm"
+                  .include "EVENTS/ChapterFinal/EventChapterFinalWorldMap.asm"
+                  .here
+
+
+
+
+            * = $0E8000
+                .logical $8E8000
+
+                  .include "EVENTS/Chapter02/EventChapter02Opening.asm"
+                  .include "EVENTS/Chapter02/EventChapter02InfiniBrigandsSpawn.asm"
+                  .include "EVENTS/Chapter02/EventChapter02ElliotCharge.asm"
+                  .include "EVENTS/Chapter02/EventChapter02PhilipDefend.asm"
+                  .include "EVENTS/Chapter02/EventChapter02LewynSilviaSpawn.asm"
+                  .include "EVENTS/Chapter02/EventChapter02InfiniSpawn.asm"
+                  .include "EVENTS/Chapter02/EventChapter02WaltzCharge.asm"
+                  .include "EVENTS/Chapter02/EventChapter02SigurdLachesisTalk.asm"
+                  .include "EVENTS/Chapter02/EventChapter02BeowulfTalkNoMoney.asm"
+                  .include "EVENTS/Chapter02/EventChapter02BeowulfTalkSuccess.asm"
+                  .include "EVENTS/Chapter02/EventChapter02MackilySpawn.asm"
+                  .include "EVENTS/Chapter02/EventChapter02ChulainnRecruitmentEvans.asm"
+                  .include "EVENTS/Chapter02/EventChapter02AgustiSpawn.asm"
+                  .include "EVENTS/Chapter02/EventChapter02LewynErinysTalk.asm"
+                  .include "EVENTS/Chapter02/EventChapter02Ending.asm"
+                  .include "EVENTS/Chapter02/EventChapter02Village8.asm"
+                  .include "EVENTS/Chapter02/EventChapter02VillageBargainBand.asm"
+                  .include "EVENTS/Chapter02/EventChapter02VillageArmorslayer.asm"
+                  .include "EVENTS/Chapter02/EventChapter02Village5.asm"
+                  .include "EVENTS/Chapter02/EventChapter02Village2.asm"
+                  .include "EVENTS/Chapter02/EventChapter02Village4.asm"
+                  .include "EVENTS/Chapter02/EventChapter02Village6.asm"
+                  .include "EVENTS/Chapter02/EventChapter02Village7.asm"
+                  .include "EVENTS/Chapter02/EventChapter02_05B.asm"
+                  .include "EVENTS/Chapter02/EventChapter02_05C.asm"
+                  .include "EVENTS/Chapter02/EventChapter02ChulainnRecruitmentHeirhein.asm"
+                  .include "EVENTS/Chapter02/EventChapter02ChulainnRecruitmentInfini.asm"
+                  .include "EVENTS/Chapter02/EventChapter02ChulainnRecruitmentMackily.asm"
+                  .include "EVENTS/Chapter02/EventChapter02ChulainnRecruitmentNordion.asm"
+                  .include "EVENTS/Chapter02/EventChapter02HeirheinSeized.asm"
+                  .include "EVENTS/Chapter02/EventChapter02ErinysGroupArrive.asm"
+                  .include "EVENTS/Chapter02/EventChapter02InfiniSeized.asm"
+                  .include "EVENTS/Chapter02/EventChapter02_064.asm"
+                  .include "EVENTS/Chapter02/EventChapter02MackilyWorried.asm"
+                  .include "EVENTS/Chapter02/EventChapter02Village1.asm"
+                  .include "EVENTS/Chapter02/EventChapter02Village3.asm"
+                  .include "EVENTS/Chapter02/EventChapter02QuanDied.asm"
+                  .include "EVENTS/Chapter02/EventChapter02EthlynDied.asm"
+                  .include "EVENTS/Chapter02/EventChapter02FinnDied.asm"
+                  .include "EVENTS/Chapter02/EventChapter02MackilySeized.asm"
+                  .include "EVENTS/Chapter02/EventChapter02_06C.asm"
+                  .include "EVENTS/Chapter02/EventChapter02_06D.asm"
+                  .include "EVENTS/Chapter02/EventChapter02_06E.asm"
+                  .include "EVENTS/Chapter02/EventChapter02_06F.asm"
+                  .include "EVENTS/Chapter02/EventChapter02MountainArmorTalk.asm"
+                  .include "EVENTS/Chapter02/EventChapter02ArdenPursuitRing.asm"
+                  .here
+
+
+
+            * = $0e9020
+                .logical $8e9020
+            .include "EVENTS/Chapter04/EventChapter04Opening.asm"
+              .include "EVENTS/Chapter04/EventChapter04CuvuliCharge.asm"
+              .include "EVENTS/Chapter04/EventChapter04DaccarAndreyPreparing.asm"
+              .include "EVENTS/Chapter04/EventChapter04RaiseBridge.asm"
+              .include "EVENTS/Chapter04/EventChapter04LowerBridge.asm"
+              .include "EVENTS/Chapter04/EventChapter04PamelaSpawn.asm"
+              .include "EVENTS/Chapter04/EventChapter04AnnandSpawn.asm"
+              .include "EVENTS/Chapter04/EventChapter04AnnandPamelaCloseByTalk.asm"
+              .include "EVENTS/Chapter04/EventChapter04_09E.asm"
+              .include "EVENTS/Chapter04/EventChapter04AndreySpawn.asm"
+              .include "EVENTS/Chapter04/EventChapter04AnnandDeathAndreyResponse.asm"
+              .include "EVENTS/Chapter04/EventChapter04AnnandDeathPlayerResponses.asm"
+              .include "EVENTS/Chapter04/EventChapter04AndreyLeave.asm"
+              .include "EVENTS/Chapter04/EventChapter04ZaxonSpawn.asm"
+              .include "EVENTS/Chapter04/EventChapter04DonovanSpawn.asm"
+              .include "EVENTS/Chapter04/EventChapter04SilesseSeized.asm"
+              .include "EVENTS/Chapter04/EventChapter04SilesseSeizedDaccarResponse.asm"
+              .include "EVENTS/Chapter04/EventChapter04LewynSilesseVisit.asm"
+              .include "EVENTS/Chapter04/EventChapter04Ending.asm"
+              .include "EVENTS/Chapter04/EventChapter04CivilianRescuedA.asm"
+              .include "EVENTS/Chapter04/EventChapter04CivilianRescuedB.asm"
+              .include "EVENTS/Chapter04/EventChapter04Village7.asm"
+              .include "EVENTS/Chapter04/EventChapter04Village4.asm"
+              .include "EVENTS/Chapter04/EventChapter04Village5.asm"
+              .include "EVENTS/Chapter04/EventChapter04Village3.asm"
+              .include "EVENTS/Chapter04/EventChapter04Village2.asm"
+              .include "EVENTS/Chapter04/EventChapter04VillageSafeguardAnyone.asm"
+              .include "EVENTS/Chapter04/EventChapter04Village6.asm"
+              .include "EVENTS/Chapter04/EventChapter04Village1.asm"
+              .include "EVENTS/Chapter04/EventChapter04TofaSeized.asm"
+              .include "EVENTS/Chapter04/EventChapter04_0B4.asm"
+              .include "EVENTS/Chapter04/EventChapter04LamiaCharge.asm"
+              .include "EVENTS/Chapter04/EventChapter04VillageSafeguardSilvia.asm"
+              .include "EVENTS/Chapter04/EventChapter04ErinysSilviaAdjacent.asm"
+              .include "EVENTS/Chapter04/EventChapter04_0B8.asm"
+              .include "EVENTS/Chapter04/EventChapter04_0B9.asm"
+               .here
+
+
+            * = $0FB81D
+                    .logical $8FB81D
+           .include "EVENTS/Chapter08/EventChapter08Opening.asm"
+                 .include "EVENTS/Chapter08/EventChapter08MuhammadCharge.asm"
+                 .include "EVENTS/Chapter08/EventChapter08OvoCharge.asm"
+                 .include "EVENTS/Chapter08/EventChapter08BanbaCharge.asm"
+                 .include "EVENTS/Chapter08/EventChapter08FebailAsaello_Spawn.asm"
+                 .include "EVENTS/Chapter08/EventChapter08IshtarSpawn.asm"
+                 .include "EVENTS/Chapter08/EventChapter08IshtarLeave.asm"
+                 .include "EVENTS/Chapter08/EventChapter08ConnachtSeized.asm"
+                 .include "EVENTS/Chapter08/EventChapter08_12C.asm"
+                 .include "EVENTS/Chapter08/EventChapter08MeathSpawn.asm"
+                 .include "EVENTS/Chapter08/EventChapter08CoulterCharge.asm"
+                 .include "EVENTS/Chapter08/EventChapter08MunsterSavedMaykovReaction.asm"
+                 .include "EVENTS/Chapter08/EventChapter08Ending.asm"
+                 .include "EVENTS/Chapter08/EventChapter08PattyDaisy_FebailAsaelloTalk.asm"
+                 .include "EVENTS/Chapter08/EventChapter08Seliph_CedHawkTalk.asm"
+                 .include "EVENTS/Chapter08/EventChapter08Village1.asm"
+                 .include "EVENTS/Chapter08/EventChapter08VillagePowerRing.asm"
+                 .include "EVENTS/Chapter08/EventChapter08Village2.asm"
+                 .include "EVENTS/Chapter08/EventChapter08Village3.asm"
+                 .include "EVENTS/Chapter08/EventChapter08Village4.asm"
+                 .include "EVENTS/Chapter08/EventChapter08VillageThiefBand.asm"
+                 .include "EVENTS/Chapter08/EventChapter08IshtarDied.asm"
+                 .include "EVENTS/Chapter08/EventChapter08CivilianRescued1.asm"
+                 .include "EVENTS/Chapter08/EventChapter08CivilianRescued2.asm"
+                 .include "EVENTS/Chapter08/EventChapter08CivilianRescued3.asm"
+                 .include "EVENTS/Chapter08/EventChapter08CivilianRescued4.asm"
+                 .include "EVENTS/Chapter08/EventChapter08CivilianRescued5.asm"
+                 .include "EVENTS/Chapter08/EventChapter08CivilianRescued6.asm"
+                 .include "EVENTS/Chapter08/EventChapter08_140.asm"
+                 .include "EVENTS/Chapter08/EventChapter08Village3Asaello.asm"
+                 .include "EVENTS/Chapter08/EventChapter08LeifNearMountain.asm"
+                 .include "EVENTS/Chapter08/EventChapter08FeeOnMountain.asm"
+                 .include "EVENTS/Chapter08/EventChapter08MuirneSeliphAdjacent.asm"
+                 .include "EVENTS/Chapter08/EventChapter08LindaOnTree.asm"
+                 .include "EVENTS/Chapter08/EventChapter08AmidOnTree.asm"
+           .here
+
+
+
+        * = $0fe8bf
+                    .logical $8fe8bf
+       aEventPointers .include "ProjectASM/New_Events/EventPointers.csv.asm"
+
+      .include "EVENTS/General/EventDebug8FEF78.asm"
+      .include "EVENTS/General/EventSigurdDeathReaction.asm"
+      .include "EVENTS/General/EventGen1HomeCastleSeized.asm"
+      .include "EVENTS/General/EventSeliphDeathReaction.asm"
+      .include "EVENTS/General/EventGen2HomeCastleSeized.asm"
+
+      .include "EVENTS/Chapter06/EventChapter06OifeySeliphTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06LesterLanaTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06FeeSeliphTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06LanaMuirne_JuliaTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06ScathachLarceiTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06ArthurAmid_SeliphTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06DeimneMuirneTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06DalvinCreidneTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06Seliph_LanaMuirneTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06JuliaSeliphTalk.asm"
+
+      .include "EVENTS/Chapter07/EventChapter07Shannan_PattyDaisyTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07SeliphShannanTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07Oifey_DiarmuidTristanTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07LarceiCreidne_ShannanTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07PattyDaisy_SeliphTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07AresSeliphTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07LeifSeliphTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07DiarmuidNannaTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07TristanJeanneTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07TineLinda_SeliphTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07LeneLaylea_SeliphTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07FinnNannaTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07FinnLanaTalk.asm"
+      .include "EVENTS/Chapter07/EventChapter07FinnLarceiTalk.asm"
+
+      .include "EVENTS/Chapter08/EventChapter08FebailAsaello_SeliphTalk.asm"
+      .include "EVENTS/Chapter08/EventChapter08HerminaHawkTalk.asm"
+      .include "EVENTS/Chapter08/EventChapter08FeeCedTalk.asm"
+      .include "EVENTS/Chapter08/EventChapter08NannaAresTalk.asm"
+      .include "EVENTS/Chapter08/EventChapter08CedSeliphTalk.asm"
+      .include "EVENTS/Chapter08/EventChapter08Seliph_TineLindaTalk.asm"
+      .include "EVENTS/Chapter08/EventChapter08JuliaSeliphTalk.asm"
+      .include "EVENTS/Chapter08/EventChapter08ArthurAmid_FeeHerminaTalk.asm"
+      .include "EVENTS/Chapter08/EventChapter08FinnLeifTalk.asm"
+
+      .include "EVENTS/Chapter09/EventChapter09FebailPattyTalk.asm"
+      .include "EVENTS/Chapter09/EventChapter09SeliphHannibalTalk.asm"
+      .include "EVENTS/Chapter09/EventChapter09LeneCoirpreTalk.asm"
+      .include "EVENTS/Chapter09/EventChapter09FinnAltenaTalk.asm"
+      .include "EVENTS/Chapter09/EventChapter09HannibalAltenaTalk.asm"
+      .include "EVENTS/Chapter09/EventChapter09PattyDaisy_CoirpreCharlotTalk.asm"
+      .include "EVENTS/Chapter09/EventChapter09JuliaSeliphTalk.asm"
+
+      .include "EVENTS/Chapter10/EventChapter10LeifAltenaTalk.asm"
+      .include "EVENTS/Chapter10/EventChapter10ShannanSeliphTalk.asm"
+      .include "EVENTS/Chapter10/EventChapter10OifeySeliphTalk.asm"
+      .include "EVENTS/Chapter10/EventChapter10CoirpreCharlot_AltenaTalk.asm"
+      .include "EVENTS/Chapter10/EventChapter10LesterDeimne_PattyDaisyTalk.asm"
+      .include "EVENTS/Chapter10/EventChapter10NannaJeanne_LeifTalk.asm"
+      .include "EVENTS/Chapter10/EventChapter10FebailAsaello_LanaMuirneTalk.asm"
+      .include "EVENTS/Chapter10/EventChapter10SeliphLeneTalk.asm"
+      .include "EVENTS/Chapter10/EventChapter10SeliphFeeTalk.asm"
+      .include "EVENTS/Chapter10/EventChapter10SeliphTineTalk.asm"
+
+      .include "EVENTS/ChapterFinal/EventChapterFinalTineLinda_SeliphTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalTineLinda_CedHawkTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalTineLinda_LeifTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalDaisyDeimneTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalJeanneLeifTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalMuirneAsaelloTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalLanaMuirne_SeliphTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalLanaFebailTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalLanaMuirne_ScathachDalvinTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalLarceiCreidne_SeliphTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalLarceiCreidne_IucharTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalLarceiCreidne_IucharbaTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalLarceiCreidne_ShannanTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalPattyDaisy_SeliphTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalPattyDaisy_ShannanTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalPattyLesterTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalNannaJeanne_SeliphTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalNannaAresTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalNannaLeifTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalFeeHermina_SeliphTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalFeeHermina_ArthurAmidTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalFeeOifeyTalk.asm"
+
+      .include "EVENTS/Chapter09/EventChapter09AsaelloDaisyTalk.asm"
+
+      .include "EVENTS/ChapterFinal/EventChapterFinalArthurTineTalk.asm"
+      .include "EVENTS/ChapterFinal/EventChapterFinalAmidLindaTalk.asm"
+
+      .include "EVENTS/Chapter09/EventChapter09LayleaCharlotTalk.asm"
+      .include "EVENTS/Chapter06/EventChapter06HerminaSeliphTalk.asm"
+      .include "ProjectASM/New_Events/EventChapter07Shannan_OifeyTalk.asm"
+      .include "ProjectASM/New_Events/EventChapterFinalAres_SeliphTalk.asm"
+      .include "ProjectASM/New_Events/EventChapterFinalLeneLaylea_AresTalk.asm"
+      .include "ProjectASM/New_Events/EventChapterFinalLana_JuliaTalk.asm"
+
+      .fill $8F8000 + $8000 - *, 0
+       .here
+
+
+
+            * = $108000
+                .logical $908000
+
+                  .dsection ChapterPrologueEventsSection
+                  .dsection ChapterPrologueEventDataSection
+
+                  .include "EVENTS/Chapter01/EventChapter01Opening.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_021.asm"
+                  .include "EVENTS/Chapter01/EventChapter01EdainGroupSpawn.asm"
+                  .include "EVENTS/Chapter01/EventChapter01GenoaSeized.asm"
+                  .include "EVENTS/Chapter01/EventChapter01SigurdAyraTalk.asm"
+                  .include "EVENTS/Chapter01/EventChapter01EdainJamkeTalk.asm"
+                  .include "EVENTS/Chapter01/EventChapter01HeirheinSpawn.asm"
+                  .include "EVENTS/Chapter01/EventChapter01NordionSpawn.asm"
+                  .include "EVENTS/Chapter01/EventChapter01MarphaSeized.asm"
+                  .include "EVENTS/Chapter01/EventChapter01VerdaneSpawn.asm"
+                  .include "EVENTS/Chapter01/EventChapter01DeirdreSpawn.asm"
+                  .include "EVENTS/Chapter01/EventChapter01Ending.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_02C.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_02D.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_02E.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_02F.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_030.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_031.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_032.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_033.asm"
+                  .include "EVENTS/Chapter01/EventChapter01Village1.asm"
+                  .include "EVENTS/Chapter01/EventChapter01Village2.asm"
+                  .include "EVENTS/Chapter01/EventChapter01Village3.asm"
+                  .include "EVENTS/Chapter01/EventChapter01EldiganRetreat.asm"
+                  .include "EVENTS/Chapter01/EventChapter01MunnirRallyVanguard.asm"
+                  .include "EVENTS/Chapter01/EventChapter01AyraDestroysGenoa.asm"
+                  .include "EVENTS/Chapter01/EventChapter01AyraStartsMoving.asm"
+                  .include "EVENTS/Chapter01/EventChapter01GenoaSeizedAyraResponse.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_03C.asm"
+                  .include "EVENTS/Chapter01/EventChapter01QuanDied.asm"
+                  .include "EVENTS/Chapter01/EventChapter01EthlynDied.asm"
+                  .include "EVENTS/Chapter01/EventChapter01FinnDied.asm"
+                  .include "EVENTS/Chapter01/EventChapter01ElliotRetreats.asm"
+                  .include "EVENTS/Chapter01/EventChapter01LexBraveAxe.asm"
+                  .include "EVENTS/Chapter01/EventChapter01CrossknightTalk.asm"
+                  .include "EVENTS/Chapter01/EventChapter01_043.asm"
+                  .here
+
+               * = $11CE2B
+                   .logical $91CE2B
+                     .include "EVENTS/Chapter06/EventChapter06Opening.asm"
+                     .include "EVENTS/Chapter06/EventChapter06OifeyGroupSpawn.asm"
+                     .include "EVENTS/Chapter06/EventChapter06GaneishireSeized.asm"
+                     .include "EVENTS/Chapter06/EventChapter06FeeArthurSpawn.asm"
+                     .include "EVENTS/Chapter06/EventChapter06SchmidtSpawn.asm"
+                     .include "EVENTS/Chapter06/EventChapter06LarceiCreidne_IucharbaTalk.asm"
+                     .include "EVENTS/Chapter06/EventChapter06LarceiCreidne_IucharTalk.asm"
+                     .include "EVENTS/Chapter06/EventChapter06IsaachSeized.asm"
+                     .include "EVENTS/Chapter06/EventChapter06SofalaSeized.asm"
+                     .include "EVENTS/Chapter06/EventChapter06BrotherRecruitedDanannResponse.asm"
+                     .include "EVENTS/Chapter06/EventChapter06Ending.asm"
+                     .include "EVENTS/Chapter06/EventChapter06Village1.asm"
+                     .include "EVENTS/Chapter06/EventChapter06Village2.asm"
+                     .include "EVENTS/Chapter06/EventChapter06Village3.asm"
+                     .include "EVENTS/Chapter06/EventChapter06Village4.asm"
+                     .include "EVENTS/Chapter06/EventChapter06VillageSkillRing.asm"
+                     .include "EVENTS/Chapter06/EventChapter06Village5.asm"
+                     .include "EVENTS/Chapter06/EventChapter06_0EA.asm"
+                     .include "EVENTS/Chapter06/EventChapter06CreidneIucharbaAdjacent.asm"
+                     .include "EVENTS/Chapter06/EventChapter06CreidneIucharAdjacent.asm"
+                     .include "EVENTS/Chapter06/EventChapter06Village2Seliph.asm"
+                     .include "EVENTS/Chapter06/EventChapter06SofalaArmyTalk.asm"
+                     .include "EVENTS/Chapter06/EventChapter06IsaachArmyTalk.asm"
+                     .include "EVENTS/Chapter06/EventChapter06DeimneIsaachVisit.asm"
+                     .include "EVENTS/Chapter06/EventChapter06_0F5.asm"
+
+                     ; 91d616
+
+                   .here
+                 * = $1D8703
+                 .logical $9D8703
+                 .include "EVENTS/Chapter03/EventChapter03Opening.asm"
+                       .include "EVENTS/Chapter03/EventChapter03MadinoSeized.asm"
+                       .include "EVENTS/Chapter03/EventChapter03SylvaleSpawn.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_075.asm"
+                       .include "EVENTS/Chapter03/EventChapter03EldiganApproachesSigurd.asm"
+                       .include "EVENTS/Chapter03/EventChapter03SigurdApproachesEldigan.asm"
+                       .include "EVENTS/Chapter03/EventChapter03LachesisEldiganTalk.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_079.asm"
+                       .include "EVENTS/Chapter03/EventChapter03EldiganDeathSigurdResponse.asm"
+                       .include "EVENTS/Chapter03/EventChapter03ThraciaSpawn.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_07C.asm"
+                       .include "EVENTS/Chapter03/EventChapter03TravantLeave.asm"
+                       .include "EVENTS/Chapter03/EventChapter03SylvaleSeized.asm"
+                       .include "EVENTS/Chapter03/EventChapter03ClaudTailtiuSpawn.asm"
+                       .include "EVENTS/Chapter03/EventChapter03OrgahilSpawn.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_081.asm"
+                       .include "EVENTS/Chapter03/EventChapter03Ending.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_083.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_084.asm"
+                       .include "EVENTS/Chapter03/EventChapter03Village2.asm"
+                       .include "EVENTS/Chapter03/EventChapter03VillageWingclipper.asm"
+                       .include "EVENTS/Chapter03/EventChapter03VillageRestore.asm"
+                       .include "EVENTS/Chapter03/EventChapter03VillageDefense.asm"
+                       .include "EVENTS/Chapter03/EventChapter03Village4.asm"
+                       .include "EVENTS/Chapter03/EventChapter03Village3.asm"
+                       .include "EVENTS/Chapter03/EventChapter03VillageStrength.asm"
+                       .include "EVENTS/Chapter03/EventChapter03Village1.asm"
+                       .include "EVENTS/Chapter03/EventChapter03QuanDied.asm"
+                       .include "EVENTS/Chapter03/EventChapter03EthlynDied.asm"
+                       .include "EVENTS/Chapter03/EventChapter03FinnDied.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_090.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_091.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_092.asm"
+                       .include "EVENTS/Chapter03/EventChapter03SylvaleCommanderTalk.asm"
+                       .include "EVENTS/Chapter03/EventChapter03DewBragiTower.asm"
+                       .include "EVENTS/Chapter03/EventChapter03_095.asm"
+                       .here
+              * = $1DBEBB
+                    .logical $9DBEBB
+              .include "EVENTS/Chapter05/EventChapter05Opening.asm"
+                    .include "EVENTS/Chapter05/EventChapter05SigurdByronTalk.asm"
+                    .include "EVENTS/Chapter05/EventChapter05AndreyCharge.asm"
+                    .include "EVENTS/Chapter05/EventChapter05BelhallaConversation.asm"
+                    .include "EVENTS/Chapter05/EventChapter05LubeckSeized.asm"
+                    .include "EVENTS/Chapter05/EventChapter05PhinoraSpawn.asm"
+                    .include "EVENTS/Chapter05/EventChapter05LeonsterSpawn.asm"
+                    .include "EVENTS/Chapter05/EventChapter05ThraciaSpawn.asm"
+                    .include "EVENTS/Chapter05/EventChapter05EthlynDied.asm"
+                    .include "EVENTS/Chapter05/EventChapter05QuanAndEthlynDead.asm"
+                    .include "EVENTS/Chapter05/EventChapter05PhinoraSeized.asm"
+                    .include "EVENTS/Chapter05/EventChapter05ReptorCharge.asm"
+                    .include "EVENTS/Chapter05/EventChapter05AidaBetrayal.asm"
+                    .include "EVENTS/Chapter05/EventChapter05ReptorBetrayalResponse.asm"
+                    .include "EVENTS/Chapter05/EventChapter05Ending.asm"
+                    .include "EVENTS/Chapter05/EventChapter05AnyoneAidaTalk.asm"
+                    .include "EVENTS/Chapter05/EventChapter05Village1.asm"
+                    .include "EVENTS/Chapter05/EventChapter05Village2.asm"
+                    .include "EVENTS/Chapter05/EventChapter05Village3.asm"
+                    .include "EVENTS/Chapter05/EventChapter05Village4.asm"
+                    .include "EVENTS/Chapter05/EventChapter05Village5.asm"
+                    .include "EVENTS/Chapter05/EventChapter05Village6.asm"
+                    .include "EVENTS/Chapter05/EventChapter05VelthomerSeized.asm"
+                    .include "EVENTS/Chapter05/EventChapter05Village7.asm"
+                    .include "EVENTS/Chapter05/EventChapter05ReptorDied.asm"
+                    .include "EVENTS/Chapter05/EventChapter05ArdenOnCliff.asm"
+                    .include "EVENTS/Chapter05/EventChapter05_0D7.asm"
+                    .include "EVENTS/Chapter05/EventChapter05_0D8.asm"
+                    .here
+              * = $30CB5A
+                     .logical $B0CB5A
+                     .include "EVENTS/Chapter03/EventChapter03LexAyraTalk.asm"
+                   .include "EVENTS/Chapter03/EventChapter03ChulainnAyraTalk.asm"
+                   .include "EVENTS/Chapter03/EventChapter03SigurdBrigidTalk.asm"
+                   .include "EVENTS/Chapter03/EventChapter03ClaudSigurdTalk.asm"
+                   .include "EVENTS/Chapter03/EventChapter03MidirBrigidTalk.asm"
+                   .include "EVENTS/Chapter03/EventChapter03EthlynQuanTalk.asm"
+                   .include "EVENTS/Chapter03/EventChapter03EdainBrigidTalk.asm"
+
+                   .include "EVENTS/Chapter04/EventChapter04SigurdClaudTalk.asm"
+                   .include "EVENTS/Chapter04/EventChapter04TailtiuAzelleTalk.asm"
+                   .include "EVENTS/Chapter04/EventChapter04EdainJamkeTalk.asm"
+                   .include "EVENTS/Chapter04/EventChapter04EdainMidirTalk.asm"
+                   .include "EVENTS/Chapter04/EventChapter04EdainAzelleTalk.asm"
+                   .include "EVENTS/Chapter04/EventChapter04SilviaClaudTalk.asm"
+                   .include "EVENTS/Chapter04/EventChapter04LewynSigurdTalk.asm"
+                   .include "EVENTS/Chapter04/EventChapter04ErinysLewynTalk.asm"
+
+                   .include "EVENTS/Chapter05/EventChapter05EdainBrigidTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05ClaudEdainTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05DewJamkeTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05AlecNaoiseTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05LexAzelleTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05SigurdAyraTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05_1CE.asm"
+                   .include "EVENTS/Chapter05/EventChapter05TailtiuAzelleTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05TailtiuClaudTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05TailtiuLexTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05ErinysLewynTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05ErinysArdenTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05ErinysNaoiseTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05SilviaClaudTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05SilviaLewynTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05SilviaAlecTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05LachesisBeowulfTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05LachesisNaoiseTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05LachesisDewTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05AyraLexTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05AyraChulainnTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05AyraArdenTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05BrigidAlecTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05BrigidJamkeTalk.asm"
+                   .include "EVENTS/Chapter05/EventChapter05BrigidMidirTalk.asm"
+                   .here
+
+            * = $318000
+                .logical $B18000
+
+                  .include "EVENTS/ChapterPrologue/EventPrologueOpening.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueEdainAbduction.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueQuanGroupSpawn.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueLexAzelleSpawn.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueYngviSeized.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueEvansSpawn.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueArvisSpawn.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueEnding.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueSigurdHomeCastle.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue00A.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue00B.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue00C.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue00D.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue00E.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue00F.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue010.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue011.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue012.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueSigurdArvisTalk.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueVillage1.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueVillage2.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueVillage4.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueVillage3.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueVillageSpeedRing.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueQuanDied.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueEthlynDied.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologueFinnDied.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue01C.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue01D.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue01E.asm"
+                  .include "EVENTS/ChapterPrologue/EventPrologue01F.asm"
+                  .here
+
+               * = $31D3D6
+                   .logical $B1D3D6
+              .include "EVENTS/Chapter09/EventChapter09Opening.asm"
+              .include "EVENTS/Chapter09/EventChapter09AltenaCharge.asm"
+              .include "EVENTS/Chapter09/EventChapter09HannibalDefend.asm"
+              .include "EVENTS/Chapter09/EventChapter09CoirpreHostage.asm"
+              .include "EVENTS/Chapter09/EventChapter09LeifAltenaTalk.asm"
+              .include "EVENTS/Chapter09/EventChapter09AltenaRespawn.asm"
+              .include "EVENTS/Chapter09/EventChapter09TravantSpawnAltenaDead.asm"
+              .include "EVENTS/Chapter09/EventChapter09HannibalCharge.asm"
+              .include "EVENTS/Chapter09/EventChapter09SeliphAltenaTalk.asm"
+              .include "EVENTS/Chapter09/EventChapter09HannibalNotRecruited.asm"
+              .include "EVENTS/Chapter09/EventChapter09LutheciaSeized.asm"
+              .include "EVENTS/Chapter09/EventChapter09CoirpreCharlot_HannibalTalk.asm"
+              .include "EVENTS/Chapter09/EventChapter09GrutiaSpawn.asm"
+              .include "EVENTS/Chapter09/EventChapter09GrutiaSeized.asm"
+              .include "EVENTS/Chapter09/EventChapter09ThraciaSpawn.asm"
+              .include "EVENTS/Chapter09/EventChapter09ArionCharge.asm"
+              .include "EVENTS/Chapter09/EventChapter09ArionDied.asm"
+              .include "EVENTS/Chapter09/EventChapter09ThraciaSeized.asm"
+              .include "EVENTS/Chapter09/EventChapter09Village1.asm"
+              .include "EVENTS/Chapter09/EventChapter09Village2.asm"
+              .include "EVENTS/Chapter09/EventChapter09Village3.asm"
+              .include "EVENTS/Chapter09/EventChapter09Village4.asm"
+              .include "EVENTS/Chapter09/EventChapter09VillageBarrierRing.asm"
+              .include "EVENTS/Chapter09/EventChapter09Village5.asm"
+              .include "EVENTS/Chapter09/EventChapter09_161.asm"
+              .include "EVENTS/Chapter09/EventChapter09CharlotHannibalAdjacent.asm"
+              .include "EVENTS/Chapter09/EventChapter09Village4Special.asm"
+              .include "EVENTS/Chapter09/EventChapter09HawkLutheciaVisit.asm"
+              .include "EVENTS/Chapter09/EventChapter09_168.asm"
+
+              .include "EVENTS/ChapterFinal/EventChapterFinalOpening.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalEddaSeized.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalDozelSpawn.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalDozelSeized.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalFriegeSpawn.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalYngviSpawn.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalFriegeSeized.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalBelhallaSpawn.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalThraciaSpawn.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinal_197.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalSeliphJuliaTalkManfroyDead.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalAltenaArionTalk.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalVelthomerSeized.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalJuliaVelthomerVisit.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalEnding.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalVillage1.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalVillage2.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalSeliphJuliaTalkManfroyAlive.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinalJuliusDied.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinal_1A1.asm"
+              .include "EVENTS/ChapterFinal/EventChapterFinal_1A2.asm"
+              .here
+
+              * = $328000
+                  .logical $B28000
+
+                    .dsection Chapter06EventsSection
+                    .dsection Chapter06EventDataSection
+                    .here
+
+            * = $3287DC
+                .logical $B287DC
+                .include "EVENTS/Chapter07/EventChapter07Opening.asm"
+
+              .include "EVENTS/Chapter07/EventChapter07BramselWaiting.asm"
+              .include "EVENTS/Chapter07/EventChapter07AedSeized.asm"
+              .include "EVENTS/Chapter07/EventChapter07MelgenSpawn.asm"
+              .include "EVENTS/Chapter07/EventChapter07AresThreatensBramsel.asm"
+              .include "EVENTS/Chapter07/EventChapter07_0FB.asm"
+              .include "EVENTS/Chapter07/EventChapter07MelgenSeized.asm"
+              .include "EVENTS/Chapter07/EventChapter07UlsterSpawn.asm"
+              .include "EVENTS/Chapter07/EventChapter07BloomCharge.asm"
+              .include "EVENTS/Chapter07/EventChapter07AresRecruitment.asm"
+              .include "EVENTS/Chapter07/EventChapter07BanbaDialogue.asm"
+              .include "EVENTS/Chapter07/EventChapter07DahnaSeized.asm"
+              .include "EVENTS/Chapter07/EventChapter07_102.asm"
+              .include "EVENTS/Chapter07/EventChapter07Ending.asm"
+              .include "EVENTS/Chapter07/EventChapter07ArthurAmid_TineLindaTalk.asm"
+              .include "EVENTS/Chapter07/EventChapter07AresDahnaVisit.asm"
+              .include "EVENTS/Chapter07/EventChapter07TineLinda_Dialogue.asm"
+              .include "EVENTS/Chapter07/EventChapter07VillageSpeedRing.asm"
+              .include "EVENTS/Chapter07/EventChapter07VillageBarrierBladeAnyone.asm"
+              .include "EVENTS/Chapter07/EventChapter07Village1.asm"
+              .include "EVENTS/Chapter07/EventChapter07Village2.asm"
+              .include "EVENTS/Chapter07/EventChapter07Village3.asm"
+              .include "EVENTS/Chapter07/EventChapter07VillageShieldRing.asm"
+              .include "EVENTS/Chapter07/EventChapter07_10E.asm"
+              .include "EVENTS/Chapter07/EventChapter07BanbaDied.asm"
+              .include "EVENTS/Chapter07/EventChapter07FotlaDied.asm"
+              .include "EVENTS/Chapter07/EventChapter07EriuDied.asm"
+              .include "EVENTS/Chapter07/EventChapter07BloomDied.asm"
+              .include "EVENTS/Chapter07/EventChapter07KutuzovFenrirFound.asm"
+              .include "EVENTS/Chapter07/EventChapter07LeonsterSeized.asm"
+              .include "EVENTS/Chapter07/EventChapter07_117.asm"
+              .include "EVENTS/Chapter07/EventChapter07DahnaArmyTalk.asm"
+              .include "EVENTS/Chapter07/EventChapter07VillageBarrierBladeLaylea.asm"
+              .include "EVENTS/Chapter07/EventChapter07DaisyShannanAdjacent.asm"
+              .include "EVENTS/Chapter07/EventChapter07DalvinTristanAdjacent.asm"
+                .here
+              * = $32f7ce
+                   .logical $b2f7ce
+                .include "EVENTS/ChapterPrologue/EventPrologueEthlynSigurdTalk.asm"
+                .include "EVENTS/ChapterPrologue/EventPrologueAzelleSigurdTalk.asm"
+                .include "EVENTS/ChapterPrologue/EventPrologueLexSigurdTalk.asm"
+                .include "EVENTS/ChapterPrologue/EventPrologueUnusedAlecEthlynTalk.asm"
+                .include "EVENTS/ChapterPrologue/EventPrologueQuanSigurdTalk.asm"
+                .include "EVENTS/ChapterPrologue/EventPrologueUnusedMidirAzelleTalk.asm"
+                .include "EVENTS/ChapterPrologue/EventPrologueUnusedNaoiseAlecTalk.asm"
+                .include "EVENTS/Chapter01/EventChapter01QuanFinnTalk.asm"
+                .include "EVENTS/Chapter01/EventChapter01MidirEdainTalk.asm"
+                .include "EVENTS/Chapter01/EventChapter01SigurdEdainTalk.asm"
+                .include "EVENTS/Chapter01/EventChapter01AzelleEdainTalk.asm"
+                .include "EVENTS/Chapter01/EventChapter01EdainEthlynTalk.asm"
+                .include "EVENTS/Chapter01/EventChapter01DewEdainTalk.asm"
+                .include "EVENTS/Chapter01/EventChapter01AyraQuanTalk.asm"
+                .include "EVENTS/Chapter02/EventChapter02DewLachesisTalk.asm"
+                .include "EVENTS/Chapter02/EventChapter02DeirdreEthlynTalk.asm"
+                .include "EVENTS/Chapter02/EventChapter02QuanFinnTalk.asm"
+                .include "EVENTS/Chapter02/EventChapter02SigurdLewynTalk.asm"
+                .include "EVENTS/Chapter02/EventChapter02BeowulfLachesisTalk.asm"
+                .include "EVENTS/Chapter02/EventChapter02AlecSilviaTalk.asm"
+                .include "EVENTS/Chapter02/EventChapter02SilviaSigurdTalk.asm"
+                .include "EVENTS/Chapter02/EventChapter02ErinysSigurdTalk.asm"
+                .here
+
+            * = $308000
+                .logical $B08000
+
+                  .dsection Chapter10EventsSection
+                  .dsection Chapter10EventDataSection
+                  .here
+
+            * = $31A378
+                    .logical $B1A378
+                    .dsection ChapterFinalEventsSection
+                   .dsection ChapterFinalEventDataSection
+                   .here
+
+
+
+ .include "ProjectASM/Project.asm"
+ .include "ProjectASM/SaveRewriting.asm"
+ .include "ProjectASM/Love.asm"
+ .include "ProjectASM/DELETING4SAVE.asm"

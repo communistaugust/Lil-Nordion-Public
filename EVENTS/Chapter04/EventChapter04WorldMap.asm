@@ -1,0 +1,38 @@
+
+  aEventChapter04WorldMap ; 8D/FDDD
+
+    PLAY_SONG $5E
+    YIELD
+
+    SET_CAMERA_POSITION [10, 18]
+    WM_FADE_IN
+    WM_SCROLL [17.5 * 16, 16 * 16]
+    YIELD
+
+    WM_DIALOGUE dialogueCh4WM1
+    YIELD
+
+    WM_CLEAR_DIALOGUE
+    YIELD
+
+    WM_SCROLL [22.5 * 16, 16 * 16]
+    YIELD
+
+    WM_DIALOGUE dialogueCh4WM2
+    YIELD
+
+    WM_FADE_OUT_PORTRAIT 2
+    YIELD
+
+    WM_FADE_OUT_PORTRAIT 4
+    YIELD
+
+    PAUSE 50
+    YIELD
+
+    PLAY_SFX_WORD $00E1
+    WM_CLEAR_DIALOGUE
+    YIELD
+
+    WM_FADE_OUT
+    END_EVENT

@@ -20,3 +20,4 @@
 .include "10-Chapter 10/Chapter 10 Pointers.asm"
 .include "11-Final Chapter/Chapter Final Pointers.asm"
 .include "Epilogues/Epilogues Pointers.asm"
+;.include "../ProjectASM/New_Events/Text/NewPointers.asm"

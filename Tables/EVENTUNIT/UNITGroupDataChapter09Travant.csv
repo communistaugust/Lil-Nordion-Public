@@ -1,0 +1,12 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Travant2,52,39,1,2,FS_Ch09Thracia,0
+ID_02,ThraciaArmy9,52,38,0,2,FS_Ch09Thracia,1
+ID_03,ThraciaArmy9,51,38,0,2,FS_Ch09Thracia,2
+ID_04,ThraciaArmy9,53,38,0,2,FS_Ch09Thracia,3
+ID_05,ThraciaArmy9,52,37,0,2,FS_Ch09Thracia,4
+ID_06,ThraciaArmy9,50,38,0,2,FS_Ch09Thracia,5
+ID_07,ThraciaArmy9,54,38,0,2,FS_Ch09Thracia,6
+ID_08,ThraciaArmy9,51,37,0,2,FS_Ch09Thracia,7
+ID_09,ThraciaArmy9,53,37,0,2,FS_Ch09Thracia,8
+ID_10,ThraciaArmy9,52,36,0,2,FS_Ch09Thracia,9
+ID_11,$FFFF,0,0,0,0,0,0

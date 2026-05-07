@@ -85,7 +85,7 @@
     .endsegment
 
     ; Identifier : $03
-    CHECK_UNIT_IN_AREA .segment Flag, CharacterID, TopLeftCorner, BottomRightCorner, FactionSlot
+    CHECK_UNIT_IN_AREA .segment Flag, CharacterID, TopLeftCorner, BottomRightCorner, FactionSlot=$FF
       .byte $0B
       .byte \Flag
       .sint \CharacterID
@@ -286,7 +286,7 @@
       .byte $21
       .char \Turn
       .char \FactionSlot
-      .byte \AISetting
+      .char \AISetting
       .sint \CharacterID
     .endsegment
 
@@ -726,13 +726,21 @@
       .byte \Target
     .endsegment
 
-    SET_TALK_TARGET_IF_UNMARRIED .segment Initiator, Target, Unknown1=$FF, Unknown2=$FF
-      .byte $69
-      .byte \Initiator
-      .byte \Target
-      .byte \Unknown1
-      .byte \Unknown2
-    .endsegment
+SET_TALK_TARGET_IF_UNMARRIED .segment Initiator, Target
+   .byte $69
+   .switch type(\Initiator)
+     .case int
+       .byte \Initiator
+       .byte \Target
+       .char -1
+       .char -1
+     .case list
+       .byte \Initiator[0]
+       .byte \Target[0]
+       .byte \Initiator[1]
+       .byte \Target[1]
+   .endswitch
+ .endsegment
 
     EC_6A .segment Unknown1, Unknown2, Unknown3, Unknown4
       .byte $6A
@@ -776,7 +784,7 @@
     ADD_UNIT_STAT .segment CharacterID, StatIndex, Value
       ; Targets EventUnitSlot1 if character isnt specified.
       .byte $70
-      .byte \CharacterID
+      .char \CharacterID
       .byte structExtendedPersonalCharacterDataRAM.\StatIndex
       .byte \Value
     .endsegment
@@ -828,4 +836,99 @@
 
     END_CHAPTER_EVENTS .segment
       .word $FFFF
+    .endsegment
+
+INCREMENT_CHAPTER_EVENT_COUNTER .segment CounterID
+    .byte $3D
+    .byte \CounterID
+  .endsegment
+
+; Identifier : $0A
+    CHECK_CHILD_TALK .segment Flag, Initiator, Target
+      ; Only works with CharacterIDs equal/greater than Seliphs
+      ; Specified characters get mapped to the substitutes IDs.
+      .byte $16
+      .byte \Flag
+      .word \Initiator
+      .word \Target
+    .endsegment
+
+SET_CHAPTER_EVENT_COUNTER .segment CounterID, Value
+      ; Sets a value to one of the 2 counters in the chapter RAM struct
+      ; ID can be 0 or 1
+      .byte $3B
+      .byte \CounterID
+      .byte \Value
+    .endsegment
+
+CHECK_CHAPTER_EVENT_COUNTER_EQUAL .segment CounterID, Value
+      .byte $3F
+      .byte \CounterID
+      .byte \Value
+    .endsegment
+
+CHECK_PERMANENT_FLAG_UNSET .segment Flag
+      .byte $39
+      .byte \Flag
+    .endsegment
+
+CHECK_FATHERS_CHILD_ALIVE .segment FatherCharacterID
+      ; Based on the given character ID, finds the units with the given
+      ; ID as father.
+      ; If at least one of them is alive, continue with the event script,
+      ; else skip over events until a BREAK_STATE_CHECKS.
+      .byte $47
+      .word \FatherCharacterID
+    .endsegment
+
+SET_TALK_TARGET_IF_CHILDREN_MARRIED .segment EventFlag, Initiator, Target
+     .byte $6C
+     .byte \EventFlag ; flag
+     .byte \Initiator[0]
+     .byte \Target[0]
+     .byte \Initiator[1]
+     .byte \Target[1]
+   .endsegment
+
+SET_CHILD_TALK_TARGET .segment Initiator, Target
+      .byte $6A
+      .byte \Initiator[0]
+      .byte \Target[0]
+      .byte \Initiator[1]
+      .byte \Target[1]
+    .endsegment
+
+DEPLOY_UNIT_GROUP_CHILD .segment UnitGroupID
+      ; Similar to the last one, but requires additional data after
+      ; this command. Takes a byte permanent flag and 2 character words.
+      ; Checks the first character word against the units in the UnitGroup
+      ; and will replace the matching character with the 2nd one if the
+      ; permanent flag is set.
+      .byte $4F
+      .byte \UnitGroupID
+    .endsegment
+
+SET_FACTION_GROUP .segment FactionSlot, FactionGroupID
+      ; Writes new FactionGroup data over an existing slot.
+      .byte $4C
+      .byte \FactionSlot
+      .byte \FactionGroupID
+    .endsegment
+
+REVIVE_FACTIONS_AI .segment FactionSlot, AISetting
+      .byte $64
+      .byte \FactionSlot
+      .byte \AISetting
+    .endsegment
+
+SEND_INVENTORY_TO_SUPPLY .segment CharacterID
+      ; Targets EventUnitSlot1 if character isnt specified.
+      .byte $5A
+      .word \CharacterID
+    .endsegment
+
+REPLACE_UNIT .segment Original, Replacement
+      .byte $76
+      .word \Original
+      .word \Replacement
     .endsegment

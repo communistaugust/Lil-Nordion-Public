@@ -1,0 +1,16 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Commander26,40,8,1,3,FS_Ch08Connacht,0
+ID_02,ConnachtArmy7,39,8,0,3,FS_Ch08Connacht,1
+ID_03,ConnachtArmy7,39,9,0,3,FS_Ch08Connacht,2
+ID_04,ConnachtArmy7,39,7,0,3,FS_Ch08Connacht,3
+ID_05,Commander25,43,8,1,5,FS_Ch08Connacht,0
+ID_06,ConnachtArmy6,43,7,0,5,FS_Ch08Connacht,0
+ID_07,ConnachtArmy6,43,9,0,5,FS_Ch08Connacht,0
+ID_08,Bloom2,49,8,1,6,FS_Ch08Connacht,0
+ID_09,ConnachtArmy8,49,11,0,6,FS_Ch08Connacht,1
+ID_10,ConnachtArmy8,48,10,0,6,FS_Ch08Connacht,2
+ID_11,ConnachtArmy8,50,10,0,6,FS_Ch08Connacht,3
+ID_12,Banba2,46,8,1,7,FS_Ch08Connacht,0
+ID_13,Fodla2,46,7,0,7,FS_Ch08Connacht,1
+ID_14,Eriu2,46,9,0,7,FS_Ch08Connacht,2
+ID_15,$FFFF,0,0,0,0,0,0

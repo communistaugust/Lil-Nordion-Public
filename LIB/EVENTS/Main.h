@@ -255,7 +255,7 @@
       ; Basically what seizing a castle does to remaining units of a faction, but on demand.
       .byte $44
       .byte \FactionSlot
-      .byte \AISetting
+      .char \AISetting
       .word \CharacterID
     .endsegment
 
@@ -387,8 +387,28 @@
       .byte $5C
     .endsegment
 
+WM_CLEAR_DIALOGUE .segment
+      ; Clears WM_DIALOGUE proc and the BG2 buffer (Used for the fading, glowing location indicators).
+      .byte $5A
+    .endsegment
 
+WM_FADE_IN .segment
+  .byte $4F
+.endsegment
 
+WM_FADE_OUT .segment
+    .byte $50
+  .endsegment
 
+TEST_PERMANENT_FLAG_SET .segment EventFlag
+    .byte $07
+    .byte \EventFlag
+  .endsegment
 
+FILL_EVENT_UNIT_SLOT_BY_COORDS .segment Coordinates, Slot
+      .byte $43
+      .byte \Coordinates[0]
+      .byte \Coordinates[1]
+      .byte \Slot >> 1
+    .endsegment
 

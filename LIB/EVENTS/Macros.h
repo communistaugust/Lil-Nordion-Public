@@ -22,3 +22,8 @@
 
   ; A better way to do this is with event condition command 61
 
+macroMapDialogue .segment DialoguePointer
+   PLAY_SFX_WORD $7FF7
+   DIALOGUE \DialoguePointer
+   YIELD
+  .endsegment

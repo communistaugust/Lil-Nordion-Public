@@ -1,0 +1,36 @@
+
+  aEventChapter04ErinysLewynTalk ; B0/CD38
+
+    PLAY_SFX_WORD $00E0
+    PAUSE 35
+    YIELD
+
+    PLAY_SONG $65
+    YIELD
+
+    DIALOGUE dialogueCh4TalkErinysLewyn
+    YIELD
+
+    PLAY_SFX_WORD $00E0
+    PAUSE 35
+    YIELD
+
+    RESTORE_PHASE_MUSIC
+    YIELD
+
+    RUN_EVENT_CONDITION
+      MODIFY_LOVE_POINTS Erinys, Lewyn, 100
+
+    RUN_EVENT_CONDITION
+      MODIFY_LOVE_POINTS Erinys, Lewyn, 100
+
+    RUN_EVENT_CONDITION
+      MODIFY_LOVE_POINTS Erinys, Lewyn, 100
+
+    RUN_EVENT_CONDITION
+          MODIFY_LOVE_POINTS Erinys, Lewyn, 100
+
+    RUN_EVENT_CONDITION
+        MODIFY_LOVE_POINTS Erinys, Lewyn, 100
+
+    END_EVENT

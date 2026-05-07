@@ -1,0 +1,12 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,LeonsterArmy,58,48,0,1,FS_Ch05Leonster,0
+ID_02,LeonsterArmy,59,48,0,1,FS_Ch05Leonster,1
+ID_03,LeonsterArmy,58,47,0,1,FS_Ch05Leonster,2
+ID_04,LeonsterArmy,59,47,0,1,FS_Ch05Leonster,3
+ID_05,LeonsterArmy,58,46,0,1,FS_Ch05Leonster,4
+ID_06,LeonsterArmy,59,46,0,1,FS_Ch05Leonster,5
+ID_07,LeonsterArmy,58,45,0,1,FS_Ch05Leonster,6
+ID_08,LeonsterArmy,59,45,0,1,FS_Ch05Leonster,7
+ID_09,Ethlyn,58,44,0,1,FS_Ch05Leonster,8
+ID_10,Quan,59,44,1,1,FS_Ch05Leonster,9
+ID_11,$FFFF,0,0,0,0,0,0

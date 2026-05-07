@@ -1,0 +1,29 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,DarkMage4,5,26,0,2,FS_Ch10Miletos,21
+ID_02,DarkMage7,7,25,0,6,FS_Ch10Miletos,22
+ID_03,DarkMage7,10,24,0,6,FS_Ch10Miletos,23
+ID_04,DarkMage5,7,29,0,2,FS_Ch10Miletos,24
+ID_05,DarkMage6,12,27,0,2,FS_Ch10Miletos,25
+ID_06,DarkMage8,15,28,0,2,FS_Ch10Miletos,26
+ID_07,DarkMage6,19,28,0,2,FS_Ch10Miletos,27
+ID_08,Mercenary15,8,31,0,2,FS_Ch10Miletos,28
+ID_09,Mercenary15,17,30,0,2,FS_Ch10Miletos,29
+ID_10,DarkMage7,6,34,0,6,FS_Ch10Miletos,0
+ID_11,DarkMage5,9,35,0,1,FS_Ch10Miletos,0
+ID_12,DarkMage4,11,33,0,1,FS_Ch10Miletos,0
+ID_13,Mercenary14,13,35,0,1,FS_Ch10Miletos,0
+ID_14,DarkMage5,18,34,0,1,FS_Ch10Miletos,0
+ID_15,DarkMage7,22,32,0,6,FS_Ch10Miletos,0
+ID_16,Mercenary16,5,36,0,1,FS_Ch10Miletos,0
+ID_17,DarkMage8,7,37,0,1,FS_Ch10Miletos,0
+ID_18,DarkMage6,3,38,0,1,FS_Ch10Miletos,0
+ID_19,DarkMage4,6,39,0,1,FS_Ch10Miletos,0
+ID_20,DarkMage6,12,39,0,1,FS_Ch10Miletos,0
+ID_21,DarkMage4,19,38,0,1,FS_Ch10Miletos,0
+ID_22,Mercenary16,23,36,0,1,FS_Ch10Miletos,0
+ID_23,DarkMage5,25,37,0,1,FS_Ch10Miletos,0
+ID_24,Mercenary14,22,39,0,1,FS_Ch10Miletos,0
+ID_25,Julius,9,29,1,6,FS_Ch10Chalphy,0
+ID_26,Ishtar2,10,28,0,6,FS_Ch10Chalphy,0
+ID_27,Zagam,9,26,0,4,FS_Ch10Miletos,9 + $20
+ID_28,$FFFF,0,0,0,0,0,0

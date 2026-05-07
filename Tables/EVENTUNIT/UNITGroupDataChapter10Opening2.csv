@@ -1,0 +1,22 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Riedel,8,57,1,1,FS_Ch10Rados,0
+ID_02,RiedelSquad5,8,56,0,1,FS_Ch10Rados,1
+ID_03,RiedelSquad5,8,58,0,1,FS_Ch10Rados,2
+ID_04,RiedelSquad1,9,57,0,1,FS_Ch10Rados,3
+ID_05,RiedelSquad1,9,56,0,1,FS_Ch10Rados,4
+ID_06,RiedelSquad1,9,58,0,1,FS_Ch10Rados,5
+ID_07,RiedelSquad3,10,57,0,1,FS_Ch10Rados,6
+ID_08,RiedelSquad3,10,56,0,1,FS_Ch10Rados,7
+ID_09,RiedelSquad3,10,58,0,1,FS_Ch10Rados,8
+ID_10,RiedelSquad4,11,57,0,1,FS_Ch10Rados,9
+ID_11,RiedelSquad4,11,56,0,1,FS_Ch10Rados,10
+ID_12,RiedelSquad4,11,58,0,1,FS_Ch10Rados,11
+ID_13,RiedelSquad2,12,57,0,1,FS_Ch10Rados,12
+ID_14,RiedelSquad2,12,56,0,1,FS_Ch10Rados,13
+ID_15,RiedelSquad2,12,58,0,1,FS_Ch10Rados,14
+ID_16,Morrigan,5,56,1,2,FS_Ch10Rados,0
+ID_17,DarkMage1,5,59,0,2,FS_Ch10Rados,1
+ID_18,DarkMage1,4,58,0,2,FS_Ch10Rados,2
+ID_19,DarkMage1,6,58,0,2,FS_Ch10Rados,3
+ID_20,Hilda1,36,48,1,3,FS_Ch10Chronos,0
+ID_21,$FFFF,0,0,0,0,0,0

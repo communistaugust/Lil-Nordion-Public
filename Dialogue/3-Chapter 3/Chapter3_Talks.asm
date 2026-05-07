@@ -1,4 +1,4 @@
-;	Talk events
+    ;	Talk events
 
 dialogueCh3TalkSylvaleSoldier
 

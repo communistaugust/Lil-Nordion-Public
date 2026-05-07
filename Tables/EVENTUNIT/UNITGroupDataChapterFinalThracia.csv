@@ -1,0 +1,8 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Arion2,61,58,1,1,FS_ChFinalThracia,0
+ID_02,WyvernKnight3,60,58,0,1,FS_ChFinalThracia,1
+ID_03,WyvernKnight3,60,59,0,1,FS_ChFinalThracia,2
+ID_04,WyvernKnight3,60,57,0,1,FS_ChFinalThracia,3
+ID_05,WyvernKnight3,60,60,0,1,FS_ChFinalThracia,4
+ID_06,WyvernKnight3,60,56,0,1,FS_ChFinalThracia,5
+ID_07,$FFFF,0,0,0,0,0,0

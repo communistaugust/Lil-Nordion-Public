@@ -1,0 +1,26 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,ZaxonArmy1,29,61,0,5,FS_Ch04Zaxon,0
+ID_02,ZaxonArmy1,29,62,0,5,FS_Ch04Zaxon,0
+ID_03,ZaxonArmy1,28,62,0,5,FS_Ch04Zaxon,0
+ID_04,ZaxonArmy1,27,61,0,5,FS_Ch04Zaxon,0
+ID_05,ZaxonArmy1,26,62,0,5,FS_Ch04Zaxon,0
+ID_06,ZaxonArmy1,26,61,0,5,FS_Ch04Zaxon,0
+ID_07,ZaxonArmy4,16,50,0,7,FS_Ch04Zaxon,0
+ID_08,ZaxonArmy4,26,43,0,7,FS_Ch04Zaxon,0
+ID_09,Civilian1,23,57,0,1,FS_Ch04Civilians,0
+ID_10,Civilian1,24,57,0,1,FS_Ch04Civilians,1
+ID_11,Civilian1,24,55,0,1,FS_Ch04Civilians,2
+ID_12,Civilian2,23,56,0,1,FS_Ch04Civilians,3
+ID_13,Civilian2,22,56,0,1,FS_Ch04Civilians,4
+ID_14,Civilian2,22,54,0,1,FS_Ch04Civilians,5
+ID_15,Lamia,56,48,1,8,FS_Ch04Zaxon,0
+ID_16,Mercenary2,57,49,0,8,FS_Ch04Zaxon,1
+ID_17,Mercenary2,57,47,0,8,FS_Ch04Zaxon,2
+ID_18,Mercenary3,56,50,0,8,FS_Ch04Zaxon,3
+ID_19,Mercenary3,56,46,0,8,FS_Ch04Zaxon,4
+ID_20,Mercenary5,54,48,0,8,FS_Ch04Zaxon,5
+ID_21,Mercenary4,54,50,0,8,FS_Ch04Zaxon,6
+ID_22,Mercenary4,54,46,0,8,FS_Ch04Zaxon,7
+ID_23,Mercenary6,55,49,0,8,FS_Ch04Zaxon,8
+ID_24,Mercenary6,55,47,0,8,FS_Ch04Zaxon,9
+ID_25,$FFFF,0,0,0,0,0,0

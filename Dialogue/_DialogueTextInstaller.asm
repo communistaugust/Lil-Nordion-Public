@@ -120,6 +120,7 @@
 .include "7-Chapter 7/Chapter7_Talks.asm"
 .include "7-Chapter 7/Chapter7_Villages.asm"
 .include "7-Chapter 7/Chapter7_WorldMap.asm"
+.include "../ProjectASM/New_Events/Text/NewTalkEventText.asm"
 .here
 
 * = $630000

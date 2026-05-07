@@ -529,7 +529,8 @@
       ; 2000 = animations off
       ; 4000 = animations by unit
       ; 8000 = not used?
-
+      wAreaRestrictionBitfield .word ?  ; $000D71
+      wDestroyedLocationsCount .word ?  ;
     ; $000D71
 
   .endvirtual
@@ -1121,6 +1122,17 @@
       .fill 9 * 6
     .bend
 
+aUnitWinCounts .block               ; $7E3D23
+    _Gen1 .brept 24
+      .word ?
+    .endrept
+    _Gen2 .brept 24                   ; $7E3D53
+      .word ?
+    .endrept
+  .bend
+
+  wTotalLevelUpCount .word ?          ; $7E3D83
+  wTotalAlivePlayerUnitCount .word ?  ; $7E3D85
   .endvirtual
 
   ; 7E3D23 - 100 bytes until items - personal kill counts?
@@ -1580,28 +1592,6 @@
   .endvirtual
 
 
-
-  .virtual $7FEB66
-
-    aMotherData .block
-      _Personal .structParentExtendedCharacterData  ; $7FEB66
-      _ROM      .structParentCharacterROMData       ; $7FEB84
-    .bend
-  .endvirtual
-    ; 7FEBA6
-
-
-  .virtual $7FEBF4
-
-    aFatherData .block
-      _Personal .structParentExtendedCharacterData  ; $7FEBF4
-      _ROM      .structParentCharacterROMData       ; $7FEC12
-    .bend
-  .endvirtual
-    ; 7FEC34
-
-
-
   .virtual $7FEA4A
 
     wDialogueBoxHDMAYPixelPosition .word ?                ; $7FEA4A
@@ -1633,3 +1623,53 @@
 
   .endvirtual
 
+.virtual $001B09
+
+    aSave .block
+      wUnknown001B09 .word ?            ; $001B09
+      wMenuOperation .word ?            ; $001B0B
+        ; 1 indexed
+        ; $8000 flag set = load, else save
+      wActiveSlot .word ?               ; $001B0D
+      wActiveSaveData .word ?           ; $001B0F
+        ; $00000111 = save ID
+        ; $01111000 = completion count
+      aSlotDataBuffer .brept 4          ; $001B11
+        .word ?
+      .endrept
+      wGameTimerLow .word ?             ; $001B19
+      wGameTimerHigh .word ?            ; $001B1B
+      wCharacterID .word ?              ; $001B1D
+      wCharacterDeploymentState .word ? ; $001B1F
+      wCharacterXPosition .word ?       ; $001B21
+      wCharacterYPosition .word ?       ; $001B23
+      wStructIndex .word ?              ; $001B25
+      wStructCount .word ?              ; $001B27
+      .word ?                           ; $001B29
+      aFactionEntryOffsets .brept 7     ; $001B2B
+        .word ?
+      .endrept
+      .word ?                           ; $001B39
+      wCurrentBitOffset .word ?         ; $001B3B
+      wAvtiveSaveSlotOffset .word ?     ; $001B3D
+      wDataBitLength .word ?            ; $001B3F
+    .bend
+
+    aPaletteFading .block
+      wMaxSteps .word ?                   ; $001B41
+      wDesiredColor .word ?               ; $001B43
+      wCurrentStep .word ?                ; $001B45
+      wCurrentPaletteBufferOffset .word ? ; $001B47
+    .bend
+
+  .endvirtual
+
+
+.virtual $7E7358
+
+  aUnitLossesCount .brept 48 ; $7E7358
+    .byte ?
+  .endrept
+
+  ; $7E7388
+  .endvirtual

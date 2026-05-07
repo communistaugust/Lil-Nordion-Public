@@ -1,0 +1,27 @@
+
+  aEventChapter01DewEdainTalk ; B2/F93D
+
+    PLAY_SFX_WORD $00E0
+    PAUSE 35
+    YIELD
+
+    PLAY_SONG $6F
+    YIELD
+
+    DIALOGUE dialogueCh1TalkDewEdain
+    YIELD
+
+    PLAY_SFX_WORD $00E0
+    PAUSE 35
+    YIELD
+
+    RESTORE_PHASE_MUSIC
+    YIELD
+
+    RUN_EVENT_CONDITION
+      MODIFY_LOVE_POINTS Edain, Dew, 50
+
+    RUN_EVENT_CONDITION
+      GIVE_UNIT_PID Edain, PI_WarpStaff
+
+    END_EVENT

@@ -1,0 +1,10 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Manfroy,61,4,1,1,FS_ChFinalVelthomer,0
+ID_02,DarkMage15,61,7,0,1,FS_ChFinalVelthomer,1
+ID_03,DarkMage15,60,6,0,1,FS_ChFinalVelthomer,2
+ID_04,DarkMage15,62,6,0,1,FS_ChFinalVelthomer,3
+ID_05,DarkMage15,61,8,0,1,FS_ChFinalVelthomer,4
+ID_06,DarkMage15,60,7,0,1,FS_ChFinalVelthomer,5
+ID_07,DarkMage15,62,7,0,1,FS_ChFinalVelthomer,6
+ID_08,Julia,59,8,1,5,FS_ChFinalBelhalla,0
+ID_09,$FFFF,0,0,0,0,0,0

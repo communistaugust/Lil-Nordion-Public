@@ -1,0 +1,14 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Annand,31,55,1,2,FS_Ch04Silesse,0
+ID_02,AnnandSquad,30,54,0,2,FS_Ch04Silesse,1
+ID_03,AnnandSquad,30,56,0,2,FS_Ch04Silesse,2
+ID_04,AnnandSquad,31,53,0,2,FS_Ch04Silesse,3
+ID_05,AnnandSquad,31,57,0,2,FS_Ch04Silesse,4
+ID_06,AnnandSquad,33,55,0,2,FS_Ch04Silesse,5
+ID_07,AnnandSquad,33,53,0,2,FS_Ch04Silesse,6
+ID_08,AnnandSquad,33,57,0,2,FS_Ch04Silesse,7
+ID_09,AnnandSquad,32,54,0,2,FS_Ch04Silesse,8
+ID_10,AnnandSquad,32,56,0,2,FS_Ch04Silesse,9
+ID_11,AnnandSquad,31,51,0,2,FS_Ch04Silesse,10
+ID_12,AnnandSquad,31,59,0,2,FS_Ch04Silesse,11
+ID_13,$FFFF,0,0,0,0,0,0

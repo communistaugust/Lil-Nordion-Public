@@ -1,0 +1,373 @@
+
+  aEventChapterFinalEnding ; B1/E58C
+
+    RUN_EVENT_CONDITION
+      SAVE_CHAPTER_TURNCOUNT
+
+    PLAY_SFX_WORD $00E2
+    PAUSE 10
+    YIELD
+
+    FADE_OUT_BY_TIMER 4
+    YIELD
+
+    RUN_EVENT_CONDITION
+      DELETE_FACTIONS_AI FS_ChFinalThracia, 1
+
+    RUN_EVENT_CONDITION
+      DELETE_FACTIONS_AI FS_ChFinalVelthomer, 1
+
+    SET_FLAG_IF_IN_CHAPTER ChapterFinal, FlagChapterFinal_RemoveBelhallaRampart
+
+    RUN_EVENT_CONDITION
+      UPDATE_LOCATION_AND_MAP_CHANGE_EVENTS
+
+    RUN_ASM $B29396
+    RUN_ASM $B294C0
+
+    PLAY_SONG $7E
+    YIELD
+
+    PAUSE 5
+    YIELD
+
+    DIALOGUE_WITH_BG $b3cf9d, DIALOGUE_BG_CLOISTER, 3, 3
+    SET_CAMERA_POSITION [35, 17]
+    YIELD
+
+    PAUSE 40
+    YIELD
+
+    RUN_ASM $B29673
+    JUMP_FALSE _NewThracia
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $91
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3cfa8, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B2968A
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _NewThracia ; B1/E5EB
+    RUN_ASM $B296A8
+    JUMP_FALSE _Agustria
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $92
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3cfb3, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B296BF
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _Agustria ; B1/E613
+    RUN_ASM $B296DD
+    JUMP_FALSE _Verdane
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $55
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3cfbe, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B296F4
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _Verdane ; B1/E63B
+    RUN_ASM $B29712
+    JUMP_FALSE _Yngvi
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $93
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3cfc9, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B29729
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _Yngvi ; B1/E663
+    RUN_ASM $B29747
+    JUMP_FALSE _Friege
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $94
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3cfd4, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B2975E
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _Friege ; B1/E68B
+    RUN_ASM $B2977C
+    JUMP_FALSE _Dozel
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $95
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3cfdf, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B29793
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _Dozel ; B1/E6B3
+    RUN_ASM $B297B1
+    JUMP_FALSE _Edda
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $96
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3cfea, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B297C8
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _Edda ; B1/E6DB
+    RUN_ASM $B297E6
+    JUMP_FALSE _Velthomer
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $97
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3cff5, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B297FD
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _Velthomer ; B1/E703
+    RUN_ASM $B2981B
+    JUMP_FALSE _Chalphy
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $98
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3d000, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B29832
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _Chalphy ; B1/E72B
+    RUN_ASM $B29850
+    JUMP_FALSE _Silesse
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $99
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3d00b, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B29867
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _Silesse ; B1/E753
+    RUN_ASM $B29885
+    JUMP_FALSE _End
+
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+      PLAY_SFX_WORD $00E2
+      PAUSE 15
+      YIELD
+
+      FADE_OUT_BY_TIMER 4
+      YIELD
+
+      PLAY_SONG $56
+      YIELD
+
+      PAUSE 10
+      YIELD
+
+      DIALOGUE_WITH_BG $b3d016, DIALOGUE_BG_CLOISTER, 3, 3
+      YIELD
+
+      RUN_ASM $B2989C
+      WAIT_UNTIL_MAP_SPRITES_HALTING
+      YIELD
+
+    _End ; B1/E77B
+    PLAY_SFX_WORD $00E2
+    PAUSE 15
+    YIELD
+
+    FADE_OUT_BY_TIMER 4
+    YIELD
+
+    PLAY_SONG $9A
+    YIELD
+
+    PAUSE 10
+    YIELD
+
+    DIALOGUE_WITH_BG dialogueEpilogues_LewynLeaves, DIALOGUE_BG_CLOISTER, 5, 4
+    YIELD
+
+    RUN_EVENT_CONDITION
+      REMOVE_CHAPTER_STRUCT ChapterFinal
+
+    PAUSE 20
+    YIELD
+
+    RUN_ASM rlASMCUnknownB1E7A1
+
+    END_EVENT
+
+  rlASMCUnknownB1E7A1 ; B1/E7A1
+
+    .al
+    .autsiz
+    .databank ?
+
+    jsl $8DA288
+    rtl
+
+    .databank 0

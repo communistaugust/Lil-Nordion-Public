@@ -116,7 +116,7 @@ aGenealogyWheel		.binary "GenealogyWheel/GenealogyWheel.4bpp.fe4"
 ; Repoints of Genealogy Wheel
 
 * = $098293
-.logical $098293
+    .logical $098293
 .word >`aGenealogyWheel
 .here
 

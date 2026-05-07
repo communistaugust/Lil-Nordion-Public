@@ -1,0 +1,14 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Schmidt,28,61,1,1,FS_Ch06Ribaut,0
+ID_02,RibautArmy,28,62,0,1,FS_Ch06Ribaut,1
+ID_03,RibautArmy,29,61,0,1,FS_Ch06Ribaut,2
+ID_04,RibautArmy,29,62,0,1,FS_Ch06Ribaut,3
+ID_05,RibautArmy,30,61,0,1,FS_Ch06Ribaut,4
+ID_06,RibautArmy,30,62,0,1,FS_Ch06Ribaut,5
+ID_07,RibautArmy,31,61,0,1,FS_Ch06Ribaut,6
+ID_08,RibautArmy,31,62,0,1,FS_Ch06Ribaut,7
+ID_09,RibautArmy,32,61,0,1,FS_Ch06Ribaut,8
+ID_10,RibautArmy,32,62,0,1,FS_Ch06Ribaut,9
+ID_11,RibautArmy,33,61,0,1,FS_Ch06Ribaut,10
+ID_12,RibautArmy,33,62,0,1,FS_Ch06Ribaut,11
+ID_13,$FFFF,0,0,0,0,0,0

@@ -1,0 +1,12 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Vaja,42,24,1,1,FS_Ch05Phinora,0
+ID_02,VelthomerArmy1,42,27,0,1,FS_Ch05Phinora,1
+ID_03,Priest1,41,26,0,1,FS_Ch05Phinora,2
+ID_04,Priest1,43,26,0,1,FS_Ch05Phinora,3
+ID_05,VelthomerArmy2,50,18,0,1,FS_Ch05Velthomer,0
+ID_06,VelthomerArmy2,52,27,0,1,FS_Ch05Velthomer,0
+ID_07,VelthomerArmy2,37,37,0,1,FS_Ch05Velthomer,0
+ID_08,VelthomerArmy2,45,35,0,1,FS_Ch05Velthomer,0
+ID_09,VelthomerArmy2,47,43,0,1,FS_Ch05Velthomer,0
+ID_10,VelthomerArmy2,38,45,0,1,FS_Ch05Velthomer,0
+ID_11,$FFFF,0,0,0,0,0,0

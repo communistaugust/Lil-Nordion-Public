@@ -1,0 +1,32 @@
+
+  aEventChapter02BeowulfTalkSuccess ; 8E/836F
+
+    PLAY_SFX_WORD $00E0
+    PAUSE 35
+    YIELD
+
+    PLAY_SONG $73
+    YIELD
+
+    DIALOGUE dialogueCh2TalkBeowolfRecruit_EnoughMoney
+    YIELD
+
+    RUN_EVENT_CONDITION
+      CHANGE_UNITS_FACTIONSLOT Beowolf, FS_Player
+
+    RUN_EVENT_CONDITION
+      SUBTRACT_UNIT_MONEY $FFFF, 10000
+
+    RUN_EVENT_CONDITION
+      ADD_UNIT_MONEY Beowolf, 10000
+
+    SET_FLAG_IF_IN_CHAPTER Chapter02, FlagChapter02_BeowolfTalkNoMoney
+
+    PLAY_SFX_WORD $00E0
+    PAUSE 35
+    YIELD
+
+    RESTORE_PHASE_MUSIC
+    YIELD
+
+    END_EVENT

@@ -1,0 +1,26 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,VelthomerArmy3,24,55,0,2,FS_Ch05Velthomer,0
+ID_02,VelthomerArmy3,22,51,0,2,FS_Ch05Velthomer,0
+ID_03,VelthomerArmy3,22,47,0,2,FS_Ch05Velthomer,0
+ID_04,VelthomerArmy3,17,46,0,2,FS_Ch05Velthomer,0
+ID_05,VelthomerArmy3,16,42,0,2,FS_Ch05Velthomer,0
+ID_06,VelthomerArmy3,21,34,0,2,FS_Ch05Velthomer,0
+ID_07,ReptorCh05,25,43,1,1,FS_Ch05Friege,0
+ID_08,FriegeArmy1,25,41,0,1,FS_Ch05Friege,1
+ID_09,FriegeArmy1,26,42,0,1,FS_Ch05Friege,2
+ID_10,FriegeArmy1,24,42,0,1,FS_Ch05Friege,3
+ID_11,FriegeArmy2,25,44,0,1,FS_Ch05Friege,4
+ID_12,FriegeArmy6,26,43,0,1,FS_Ch05Friege,5
+ID_13,FriegeArmy6,24,43,0,1,FS_Ch05Friege,6
+ID_14,FriegeArmy5,27,43,0,1,FS_Ch05Friege,7
+ID_15,FriegeArmy5,23,43,0,1,FS_Ch05Friege,8
+ID_16,FriegeArmy3,27,44,0,1,FS_Ch05Friege,9
+ID_17,FriegeArmy3,23,44,0,1,FS_Ch05Friege,10
+ID_18,FriegeArmy8,26,44,0,1,FS_Ch05Friege,11
+ID_19,FriegeArmy8,24,44,0,1,FS_Ch05Friege,12
+ID_20,FriegeArmy7,25,45,0,1,FS_Ch05Friege,13
+ID_21,FriegeArmy7,26,45,0,1,FS_Ch05Friege,14
+ID_22,FriegeArmy7,24,45,0,1,FS_Ch05Friege,15
+ID_23,FriegeArmy4,27,45,0,1,FS_Ch05Friege,16
+ID_24,FriegeArmy4,23,45,0,1,FS_Ch05Friege,17
+ID_25,$FFFF,0,0,0,0,0,0

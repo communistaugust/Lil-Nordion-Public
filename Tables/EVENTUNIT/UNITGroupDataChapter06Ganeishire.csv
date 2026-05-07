@@ -1,0 +1,26 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Harold,56,14,1,1,FS_Ch06Ganeishire,0
+ID_02,GaneshaArmy1,56,17,0,1,FS_Ch06Ganeishire,1
+ID_03,GaneshaArmy1,55,16,0,1,FS_Ch06Ganeishire,2
+ID_04,GaneshaArmy1,57,16,0,1,FS_Ch06Ganeishire,3
+ID_05,GaneshaArmy4,51,16,0,2,FS_Ch06Ganeishire,0
+ID_06,GaneshaArmy2,52,17,0,2,FS_Ch06Ganeishire,0
+ID_07,GaneshaArmy2,53,14,0,2,FS_Ch06Ganeishire,0
+ID_08,GaneshaArmy2,53,16,0,2,FS_Ch06Ganeishire,0
+ID_09,GaneshaArmy4,53,18,0,2,FS_Ch06Ganeishire,0
+ID_10,GaneshaArmy3,54,13,0,2,FS_Ch06Ganeishire,0
+ID_11,GaneshaArmy2,54,17,0,2,FS_Ch06Ganeishire,0
+ID_12,GaneshaArmy2,54,18,0,2,FS_Ch06Ganeishire,0
+ID_13,GaneshaArmy3,38,16,0,3,FS_Ch06Ganeishire,12
+ID_14,GaneshaArmy4,37,12,0,3,FS_Ch06Ganeishire,0
+ID_15,GaneshaArmy2,36,14,0,3,FS_Ch06Ganeishire,0
+ID_16,GaneshaArmy3,33,11,0,3,FS_Ch06Ganeishire,0
+ID_17,GaneshaArmy2,31,10,0,3,FS_Ch06Ganeishire,0
+ID_18,GaneshaArmy2,31,12,0,3,FS_Ch06Ganeishire,0
+ID_19,GaneshaArmy2,30,11,0,3,FS_Ch06Ganeishire,0
+ID_20,GaneshaArmy4,29,13,0,3,FS_Ch06Ganeishire,0
+ID_21,GaneshaArmy3,24,6,0,3,FS_Ch06Ganeishire,0
+ID_22,GaneshaArmy2,22,8,0,3,FS_Ch06Ganeishire,0
+ID_23,GaneshaArmy2,20,2,0,3,FS_Ch06Ganeishire,0
+ID_24,GaneshaArmy2,16,9,0,3,FS_Ch06Ganeishire,0
+ID_25,$FFFF,0,0,0,0,0,0

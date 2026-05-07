@@ -1,0 +1,14 @@
+.structUNITEntry 1,CharacterID,DestinationX,DestinationY,GroupLeaderFlag,AI,FactionSlot,FormationID
+ID_01,Draco,41,25,0,3,FS_ChFinalBelhalla,5
+ID_02,Gallus,43,25,0,3,FS_ChFinalBelhalla,6
+ID_03,Anguilla,41,27,0,3,FS_ChFinalBelhalla,7
+ID_04,Ovis,43,27,0,3,FS_ChFinalBelhalla,8
+ID_05,Tigris,40,25,0,3,FS_ChFinalBelhalla,9
+ID_06,Simia,45,25,0,3,FS_ChFinalBelhalla,10
+ID_07,Bovis,39,26,0,3,FS_ChFinalBelhalla,11
+ID_08,Mus,40,24,0,3,FS_ChFinalBelhalla,12
+ID_09,Ishtar3,38,20,1,1,FS_ChFinalBelhalla,0
+ID_10,BelhallaArmy1,38,21,0,1,FS_ChFinalBelhalla,1
+ID_11,BelhallaArmy4,37,20,0,1,FS_ChFinalBelhalla,2
+ID_12,BelhallaArmy2,37,19,0,1,FS_ChFinalBelhalla,3
+ID_13,BelhallaArmy3,36,20,0,1,FS_ChFinalBelhalla,4
