@@ -262,3 +262,13 @@ WorldMap_Tilemap		.binary "WorldMap/WorldMap.tilemap.fe4"			; used to be 925h at
 .logical $00B4CC
 .byte `WorldMap_Tilemap
 .here
+
+* = $430000
+.logical $430000
+TitleScreenTileSet .binary "TitleScreen/GayTitle.4bpp.fe4"
+.here
+
+* = $2026FF
+.logical $2026FF
+Gaypal .binary "TitleScreen/GayPallete.pal"
+.here
