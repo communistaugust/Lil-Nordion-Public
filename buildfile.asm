@@ -136,8 +136,8 @@ GUARD_FE4_BASEROM :?= false
       aGen1LoveGrowths .binclude "Tables/Gen1LoveGrowths.csv.asm"                                  ; 83/876A
       aGen2LoveGrowths .binclude "Tables/Gen2LoveGrowths.csv.asm"                                  ; 83/87F1
       aUnknown838961 .binclude "Tables/Unknown838961.asm"                                          ; 83/8961
-      aChildrenDataOffsets .binclude "Tables/ChildrenDataOffsets.csv.asm"                          ; 83/8993
-      aChildrenData .binclude "Tables/ChildrenData.csv.asm"                                        ; 83/89A5
+      aOldChildrenDataOffsets .binclude "Tables/ChildrenDataOffsets.csv.asm"                          ; 83/8993
+      aOldChildrenData .binclude "Tables/ChildrenData.csv.asm"                                        ; 83/89A5
       aAncestryGrowthBoostsOffsets .binclude "Tables/AncestryDataOffsets.csv.asm"                  ; 83/89C9
       aAncestryData .binclude "Tables/AncestryData.csv.asm"                                        ; 83/89E3
       aClassNameOffsets .include "Tables/ClassNameOffsets.csv.asm"                                 ; 83/8AB3
@@ -192,6 +192,8 @@ GUARD_FE4_BASEROM :?= false
           aLoveMLMGrowthOffsets .include "Love_Table/LoveMLMGrowthOffset.asm"                              ; 83/8738
           aGen1MLMLoveGrowths .binclude "Love_Table/Gen1LoveGrowthsMLM.csv.asm"                                  ; 83/876A
           aGen2MLMLoveGrowths .binclude "Love_Table/Gen2LoveGrowthsMLM.csv.asm"
+          aChildrenDataOffsets .binclude "Tables/NewChildrenDataOffsets.csv.asm"                          ; 83/8993
+          aChildrenData .binclude "Tables/NewChildrenData.csv.asm"
           .here
     * = $08D365
     .logical $88D365
@@ -1116,3 +1118,4 @@ GUARD_FE4_BASEROM :?= false
  .include "ProjectASM/SaveRewriting.asm"
  .include "ProjectASM/Love.asm"
  .include "ProjectASM/DELETING4SAVE.asm"
+ .include "ProjectASM/OneChild/OneChildASM.asm"

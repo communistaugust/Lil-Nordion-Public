@@ -1,4 +1,4 @@
-.structStaticCharacterROMEntry 1,.structDynamicCharacterROMEntry,.structEnemyCharacterROMEntry,Type,HP,STR,MAG,SKL,SPD,DEF,RES,LUK,Class,Level,LeadershipStars,Money,ID,Name,GenerationID,Gender,Unknown,HPGrowth,STRGrowth,MAGGrowth,SKLGrowth,SPDGrowth,DEFGrowth,RESGrowth,LUKGrowth,Skills1,Skills2,Skills3,Ancestry1,Ancestry2,Equipment1,Equipment2,UniqueEquipment,Influence
+.structStaticCharacterROMEntry 1,.structDynamicCharacterROMEntry,.structEnemyCharacterROMEntry,Type,HP,STR,MAG,SKL,SPD,DEF,RES,LUK,Class,Level,LeadershipStars,Money,ID,Name,GenerationID,Gender,Unknown,HPGrowth,STRGrowth,MAGGrowth,SKLGrowth,SPDGrowth,DEFGrowth,RESGrowth,LUKGrowth,Skills1,Skills2,Skills3,Ancestry1,Ancestry2,Equipment1,Equipment2,UniqueEquipment,MajorInfluence
 Sigurd,,,UnitTypeStatic,35,4,0,4,5,2,0,7,KnightLord,5,2,5,$0001,SigurdName,$01,GenderMale,0,70,30,5,30,30,40,5,20,UnitSkill1FollowUp,None,None,PrimaryBaldrAncestry,None,PI_SteelSword1,PI_IronLance1,NoItem,
 Naoise,,,UnitTypeStatic,33,4,0,1,2,2,0,4,Cavalier,3,0,2,$0002,NaoiseName,$02,GenderMale,0,80,40,5,30,20,40,5,20,None,UnitSkill2Critical | UnitSkill2Onslaught,None,None,None,PI_SteelSword3,NoItem,NoItem,
 Alec,,,UnitTypeStatic,32,2,0,3,4,1,0,4,Cavalier,2,0,2,$0003,AlecName,$03,GenderMale,0,70,30,5,40,30,30,5,30,UnitSkill1FollowUp | UnitSkill1Nihil,None,None,None,None,PI_IronSword1,NoItem,NoItem,
@@ -48,14 +48,14 @@ Linda,,,UnitTypeStatic,26,0,4,3,3,1,2,2,ThunderMage,3,0,5,$002E,LindaName,$16,Ge
 Laylea,,,UnitTypeStatic,24,1,0,0,6,0,1,4,Dancer,3,0,3,$002F,LayleaName,$17,GenderFemale,0,50,50,10,20,40,20,20,30,UnitSkill1Charm,None,None,None,None,NoItem,NoItem,NoItem,
 Jeanne,,,UnitTypeStatic,30,3,4,3,5,2,3,4,Troubadour,3,0,2,$0030,JeanneName,$18,GenderFemale,0,60,20,20,50,20,30,20,10,None,None,None,None,None,PI_IronSword6,PI_MendStaff3,NoItem,
 Iucharba,,,UnitTypeStatic,42,8,0,4,6,6,1,5,AxeFighter,12,0,5,$0031,IucharbaName,$06,GenderMale,0,90,40,0,50,10,30,5,10,None,UnitSkill2Onslaught,None,SecondaryNalAncestry,None,PI_SteelAxe3,NoItem,PI_ParagonRing,
-,Scathach,,UnitTypeDynamic,,,,,,,,,SwordFighter,1,,,$0032,ScathachName,$03,GenderMale,,,,,,,,,,,,,,,PI_IronBlade3,NoItem,,1
+,Scathach,,UnitTypeDynamic,,,,,,,,,SwordFighter,1,,,$0032,ScathachName,$03,GenderMale,,,,,,,,,,,,,,,PI_IronBlade3,NoItem,,0
 ,Febail,,UnitTypeDynamic,,,,,,,,,BowFighter,9,,,$0033,FebailName,$04,GenderMale,,,,,,,,,,,,,,,PI_SilverBow2,NoItem,,0
-,Coirpre,,UnitTypeDynamic,,,,,,,,,Priest,1,,,$0034,CoirpreName,$07,GenderMale,,,,,,,,,,,,,,,PI_PhysicStaff2,NoItem,,1
-,Ced,,UnitTypeDynamic,,,,,,,,,Sage,14,,,$0035,CedName,$08,GenderMale,,,,,,,,,,,,,,,PI_Lightning1,NoItem,,1
-,Diarmuid,,UnitTypeDynamic,,,,,,,,,FreeKnight,3,,,$0036,DiarmuidName,$09,GenderMale,,,,,,,,,,,,,,,PI_IronSword5,NoItem,,1
-,Lester,,UnitTypeDynamic,,,,,,,,,ArcherKnight,1,,,$0037,LesterName,$0B,GenderMale,,,,,,,,,,,,,,,PI_IronBow2,NoItem,,1
-,Arthur,,UnitTypeDynamic,,,,,,,,,Mage,2,,,$0038,ArthurName,$0E,GenderMale,,,,,,,,,,,,,,,PI_Wind2,NoItem,,1
-,Patty,,UnitTypeDynamic,,,,,,,,,Thief,1,,,$0039,PattyName,$10,GenderFemale,,,,,,,,,,,,,,,PI_SleepSword,NoItem,,1
+,Coirpre,,UnitTypeDynamic,,,,,,,,,Priest,1,,,$0034,CoirpreName,$07,GenderMale,,,,,,,,,,,,,,,PI_PhysicStaff2,NoItem,,0
+,Ced,,UnitTypeDynamic,,,,,,,,,Sage,14,,,$0035,CedName,$08,GenderMale,,,,,,,,,,,,,,,PI_Lightning1,NoItem,,0
+,Diarmuid,,UnitTypeDynamic,,,,,,,,,FreeKnight,3,,,$0036,DiarmuidName,$09,GenderMale,,,,,,,,,,,,,,,PI_IronSword5,NoItem,,0
+,Lester,,UnitTypeDynamic,,,,,,,,,ArcherKnight,1,,,$0037,LesterName,$0B,GenderMale,,,,,,,,,,,,,,,PI_IronBow2,NoItem,,0
+,Arthur,,UnitTypeDynamic,,,,,,,,,Mage,2,,,$0038,ArthurName,$0E,GenderMale,,,,,,,,,,,,,,,PI_Wind2,NoItem,,0
+,Patty,,UnitTypeDynamic,,,,,,,,,Thief,1,,,$0039,PattyName,$10,GenderFemale,,,,,,,,,,,,,,,PI_SleepSword,NoItem,,0
 ,Larcei,,UnitTypeDynamic,,,,,,,,,SwordFighter,1,,,$003A,LarceiName,$11,GenderFemale,,,,,,,,,,,,,,,PI_IronBlade4,NoItem,,0
 ,Lana,,UnitTypeDynamic,,,,,,,,,Priest,1,,,$003B,LanaName,$12,GenderFemale,,,,,,,,,,,,,,,PI_HealStaff3,NoItem,,0
 ,Fee,,UnitTypeDynamic,,,,,,,,,PegasusKnight,2,,,$003C,FeeName,$15,GenderFemale,,,,,,,,,,,,,,,PI_SlimLance2,PI_BerserkSword,,0

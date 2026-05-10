@@ -1,11 +1,7 @@
 
     .weak
 
-      rlFindCharacterByGenerationID             :?= address($848726)
-      rlClearHighlightWorldMapPart              :?= address($8B8A84)
-      rlGetMapSpriteMovementSound               :?= address($88C13E)
-      rsMovingMapSpriteAppendDecomp             :?= address($88D67C)
-      rlApplyMapTileChange                      :?= address($86C6E8)
+
 
     .endweak
 

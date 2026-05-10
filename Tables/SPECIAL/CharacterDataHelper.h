@@ -1,3 +1,3 @@
 .structStaticCharacterROMEntry,Type,HP,STR,MAG,SKL,SPD,DEF,RES,LUK,Class,Level,LeadershipStars,Money,ID,Name,GenerationID,Gender,Unknown,HPGrowth,STRGrowth,MAGGrowth,SKLGrowth,SPDGrowth,DEFGrowth,RESGrowth,LUKGrowth,Skills1,Skills2,Skills3,Ancestry1,Ancestry2,Equipment1,Equipment2,UniqueEquipment
-.structDynamicCharacterROMEntry,Type,Class,Level,ID,Name,GenerationID,Gender,Equipment1,Equipment2,Influence
+.structDynamicCharacterROMEntry,Type,Class,Level,ID,Name,GenerationID,Gender,Equipment1,Equipment2,MajorInfluence
 .structEnemyCharacterROMEntry,Type,ID,Name,Class,Gender,Level,LeadershipStars,Unknown,Equipment1,Equipment2,UniqueEquipment

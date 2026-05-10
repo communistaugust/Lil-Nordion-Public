@@ -1,10 +1,10 @@
 .word 0,Offset
-Deirdre,aChildrenData.DeirdreChildrenDataEntry - aChildrenDataOffsets
-Ethlyn,aChildrenData.EthlynChildrenDataEntry - aChildrenDataOffsets
-Lachesis,aChildrenData.LachesisChildrenDataEntry - aChildrenDataOffsets
-Ayra,aChildrenData.AyraChildrenDataEntry - aChildrenDataOffsets
-Erinys,aChildrenData.ErinysChildrenDataEntry - aChildrenDataOffsets
-Tailtiu,aChildrenData.TailtiuChildrenDataEntry - aChildrenDataOffsets
-Silvia,aChildrenData.SilviaChildrenDataEntry - aChildrenDataOffsets
-Edain,aChildrenData.EdainChildrenDataEntry - aChildrenDataOffsets
-Brigid,aChildrenData.BrigidChildrenDataEntry - aChildrenDataOffsets
+OldDeirdre,aOldChildrenData.OldDeirdreChildrenDataEntry - aOldChildrenDataOffsets
+OldEthlyn,aOldChildrenData.OldEthlynChildrenDataEntry - aOldChildrenDataOffsets
+OldLachesis,aOldChildrenData.OldLachesisChildrenDataEntry - aOldChildrenDataOffsets
+OldAyra,aOldChildrenData.OldAyraChildrenDataEntry - aOldChildrenDataOffsets
+OldErinys,aOldChildrenData.OldErinysChildrenDataEntry - aOldChildrenDataOffsets
+OldTailtiu,aOldChildrenData.OldTailtiuChildrenDataEntry - aOldChildrenDataOffsets
+OldSilvia,aOldChildrenData.OldSilviaChildrenDataEntry - aOldChildrenDataOffsets
+OldEdain,aOldChildrenData.OldEdainChildrenDataEntry - aOldChildrenDataOffsets
+OldBrigid,aOldChildrenData.OldBrigidChildrenDataEntry - aOldChildrenDataOffsets

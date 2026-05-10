@@ -8,7 +8,7 @@ TailtiuLoveGrowth,aGen1LoveGrowths.TailtiuGen1LoveGrowthsEntry - aLoveGrowthOffs
 SilviaLoveGrowth,aGen1LoveGrowths.SilviaGen1LoveGrowthsEntry - aLoveGrowthOffsets
 EdainLoveGrowth,aGen1LoveGrowths.EdainGen1LoveGrowthsEntry - aLoveGrowthOffsets
 BrigidLoveGrowth,aGen1LoveGrowths.BrigidGen1LoveGrowthsEntry - aLoveGrowthOffsets
-DaisyLoveGrowth,aGen2LoveGrowths.DaisyGen2LoveGrowthsEntry - size(structGen1LoveEn  try) - aLoveGrowthOffsets
+DaisyLoveGrowth,aGen2LoveGrowths.DaisyGen2LoveGrowthsEntry - size(structGen1LoveEntry) - aLoveGrowthOffsets
 CreidneLoveGrowth,aGen2LoveGrowths.CreidneGen2LoveGrowthsEntry - size(structGen1LoveEntry) - aLoveGrowthOffsets
 MuirneLoveGrowth,aGen2LoveGrowths.MuirneGen2LoveGrowthsEntry - size(structGen1LoveEntry) - aLoveGrowthOffsets
 JuliaLoveGrowth,aGen2LoveGrowths.JuliaGen2LoveGrowthsEntry - size(structGen1LoveEntry) - aLoveGrowthOffsets

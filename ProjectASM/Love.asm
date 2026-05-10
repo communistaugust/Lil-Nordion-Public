@@ -10,7 +10,6 @@
       rsEventLoadSpecifiedOrEventUnit1Pointer     :?= address($8692DC)
       rlGetUnitRAMDataPointerByID     :?= address($8484B4)
       rlDeleteParentsAndModifyChildrenData :?= address($8481FF)
-
     .endweak
 
 
@@ -888,6 +887,8 @@ rlGetUnitLoveGrowthWithTarget ; 87/AD0E
                 plb
                 jsr rlCleanupUnitLove
                 jsl rlDeleteParentsAndModifyChildrenData
+                jsl rlNewDeleteParents
+                jsl HandleNewSiblings
                 plp
                 plb
                 rtl
@@ -921,6 +922,7 @@ rlGetUnitLoveGrowthWithTarget ; 87/AD0E
                               plb
                               rtl
                                            .databank 0
+
                             .here
 
 * = $04C3FF
