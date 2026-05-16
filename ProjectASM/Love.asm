@@ -888,7 +888,6 @@ rlGetUnitLoveGrowthWithTarget ; 87/AD0E
                 jsr rlCleanupUnitLove
                 jsl rlDeleteParentsAndModifyChildrenData
                 jsl rlNewDeleteParents
-                jsl HandleNewSiblings
                 plp
                 plb
                 rtl
@@ -1239,7 +1238,4 @@ rsChapterEventConditionCommand60
         .here
 
 
-* = $0481AD
-.logical $8481AD
-JSL rlDeleteLoveandDeleteParentsAndModifyChildrenData
-.here
+
