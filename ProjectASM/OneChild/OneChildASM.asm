@@ -77,50 +77,6 @@ rlLoadChildUnit ; 84/BAA1
         .databank 0
 .here
 
-* = $04A40D
-.logical $84A40D
-    rlGetSelectedUnitMotherID ; 84/A40D
-
-        .al
-        .autsiz
-        .databank ?
-
-        phx
-        phy
-        jsl rlGetSelectedUnitCharacterID
-        sta wRoutineVariable1,b
-
-        lda aChildrenDataOffsets
-        tax
-
-        ldy #0
-
-        -
-        lda aChildrenDataOffsets,x
-        cmp wRoutineVariable1,b
-        beq _Child
-
-        inc x
-        inc x
-        inc y
-        cpy #size(aChildrenDataOffsets)
-        bcc -
-
-        lda #0
-
-        -
-        ply
-        plx
-        rtl
-
-        _Child
-        tya
-        lsr a
-        inc a
-        bra -
-
-        .databank 0
-.here
 
 * = $0197E0
 .logical $8197E0
@@ -172,48 +128,67 @@ rlSetChildrenPermanentFlags ; 84/BB1E
        rtl
 
        HandleNewSiblings
-                      .al
-                      .autsiz
-                      .databank ?
-                      lda wRoutineVariable1,b
-                      pha
-                      lda #$1
-                      _loop
-                      pha
-                      cmp #$05
-                      beq _nope
-                      jsl rlFindCharacterByGenerationID
-                      jsl rlGetSelectedUnitCharacterID
-                      sta wRoutineVariable3,b
-                      jsl rlGetSelectedUnitMotherID
-                      sta wRoutineVariable1,b
-                      jsl rlGetSelectedUnitFatherID
-                      sta wRoutineVariable2,b
-                      cmp wRoutineVariable1,b
-                      bcs +
-                      ldx wRoutineVariable1,b
-                      lda wRoutineVariable2,b
-                      sta wRoutineVariable1,b
-                      txa wRoutineVariable2,b
-                      +
-                      ldy #$1
-                      _loop2
-                      tya
-                      jsl rlFindCharacterByGenerationID
-                      jsl rlGetSelectedUnitMotherID
-                      sta
-                        sta aSiblingCritEntry11,x
-                        pla
-                        sta aSiblingCritEntry11+2,x
-                      _nope
-                      pla
-                      inc a
-                      cmp #$19
-                      bne _loop
-                      pla
-                      sta wRoutineVariable1,b
-                      rts
-                      .databank 0
+        .al
+        .autsiz
+        .databank ?
+            lda wRoutineVariable1,b
+            pha
+            phx
+            ldx #0
+            ldy #$1
+            _loop
+            lda y
+            cmp #$05
+            beq _nope2
+            cmp #$0A
+            beq _nope2
+            jsl rlFindCharacterByGenerationID
+            jsl rlGetSelectedUnitCharacterID
+            sta wRoutineVariable3,b
+            jsl rlGetSelectedUnitMainParentID
+            sta wRoutineVariable1,b
+            jsl rlGetSelectedUnitFatherID
+            sta wRoutineVariable2,b
+            lda y
+            inc a
+            _loop2
+            pha
+            cmp #$05
+            beq _nope
+            jsl rlFindCharacterByGenerationID
+            jsl rlGetSelectedUnitMainParentID
+            cmp wRoutineVariable2
+            bne _nope
+            jsl rlGetSelectedUnitFatherID
+            cmp wRoutineVariable1
+            bne _nope
+            pla
+            jsl rlFindCharacterByGenerationID
+            jsl rlGetSelectedUnitCharacterID
+            sta aSiblingCritEntry11,x
+            lda wRoutineVariable3
+            sta aSiblingCritEntry11+2,x
+            inx
+            inx
+            inx
+            inx
+            bra _nope2
+            _nope
+            pla
+            cmp #$19
+            beq _nope2
+            inc a
+            bra _loop2
+            _nope2
+            iny
+            cpy    #$19
+            bne _loop
+            _end
+            plx
+            pla
+            sta wRoutineVariable1,b
+            rts
+        .databank 0
 
            rlinitialateSiblings
             .al
@@ -443,29 +418,319 @@ rlUnknown8480EC ; 84/80EC
 
         .databank 0
         .here
+
 * = $07BCCF
 .logical $87BCCF
-rsActionStructCheckForSiblingCrit ; 87/BCCF
+rsActionStructCheckForSiblingCrit
+.al
+.autsiz
+.databank ?
+                jsl rlCheckForSiblingCritUnit
+                cmp #$0001
+                bne _test
 
+                  sec
+                  rts
+
+                _test
+                clc
+                rts
+        rts
+        .databank 0
+.here
+
+             * = $07FEFF
+                 .logical $87FEFF
+       aSiblingCritEntryPointers
+
+               .long  aSiblingCritEntry1
+               .long  aSiblingCritEntry2
+               .long  aSiblingCritEntry3
+               .long  aSiblingCritEntry4
+               .long  aSiblingCritEntry5
+               .long  aSiblingCritEntry6
+               .long  aSiblingCritEntry7
+               .long  aSiblingCritEntry8
+               .long  aSiblingCritEntry9
+               .long  aSiblingCritEntry10
+               .long  aSiblingCritEntry11
+               .long  aSiblingCritEntry12
+               .long  aSiblingCritEntry13
+               .long  aSiblingCritEntry14
+               .long  aSiblingCritEntry15
+               .long  aSiblingCritEntry16
+               .long  aSiblingCritEntry17
+        .here
+* = $08FA30
+.logical $88FA30
+
+rlCheckForSiblingCritUnit ; 87/BCCF
+    .al
+    .autsiz
+    .databank ?
+        phb
+        php
+        phk
+        plb
+        phx
+        phy
+        ldx wSelectedUnitDataRAMPointer,b
+        phx
+        ldx wR11
+        phx
+        stz wR12
+        jsl rlGetSelectedUnitCharacterID
+        sta wR0
+        lda #$FF
+        STA $7F442A
+        STA $7F442C
+        STA $7F442E
+        lda wR0
+        jsr rsCheckIfUnitSiblingCritTable
+        cmp #$FF
+        sta wR12
+        beq _End
+        ldx #0
+        ldy #8
+        lda #4
+        sta wR11
+              -
+              lda $0004,b,y
+              cmp #$00FF
+              beq _Next
+                tax
+                lda aDeploymentTable._UnitRAMPointer,x
+                sta wSelectedUnitDataRAMPointer,b
+                jsl rlGetSelectedUnitCharacterID
+                ldx wR12
+                jsr rsCheckIfUnitSiblingCritEntry
+                bcs _Next
+                lda $0004,b,y
+                sta $7F442A
+                lda #1
+                bra _End_validated
+
+              _Next
+              inc y
+              inc y
+              dec wR11
+              bne -
+
+            _End
+            lda #0
+            _End_validated
+            plx
+            stx wR11
+            plx
+            stx wSelectedUnitDataRAMPointer,b
+            ply
+            plx
+            plp
+            plb
+            rtl
+    .databank 0
+
+    rsCheckIfUnitSiblingCritTable
         .al
         .autsiz
         .databank ?
-
-            lda #(`aSiblingCritEntryPointers)<<8
-        sta lR18+1
-        lda #<>aSiblingCritEntryPointers
-        sta lR18
-        lda #1
-        jsr $87bdab
-        cmp #2
-        bcc +
-
-          sec
-          rts
-
-        +
-        clc
+        php
+        phy
+        phx
+        ldx wRoutineVariable1,b
+        phx
+        ldx wRoutineVariable2,b
+        phx
+        sta wRoutineVariable1,b
+        lda #$0
+        sta wRoutineVariable2,b
+        ldx #$00
+        ldy #2
+        _loop
+        Lda aSiblingCritEntryPointers,x;
+        STA $00
+        LDX #$7F
+        STX $02
+        LDA [$00]
+        cmp wRoutineVariable1,b
+        beq _yeah
+        LDA [$00],y
+        cmp wRoutineVariable1,b
+        beq _yeah
+        inc wRoutineVariable2,b
+        inc wRoutineVariable2,b
+        inc wRoutineVariable2,b
+        lda wRoutineVariable2,b
+        cmp #$17
+        beq _end
+        tax
+        bra _loop
+        _yeah
+        lda wRoutineVariable2,b
+        bra _end2
+        _end
+        lda #$FF
+        _end2
+        plx
+        stx wRoutineVariable2,b
+        plx
+        stx wRoutineVariable1,b
+        plx
+        ply
+        plp
         rts
-
         .databank 0
-        .here
+
+        rsCheckIfUnitSiblingCritEntry
+        .al
+        .autsiz
+        .databank ?
+        phy
+        ldy wRoutineVariable1,b
+        phy
+        sta wRoutineVariable1,b
+        lda aSiblingCritEntryPointers,x;
+        ldy #$02
+        STA $00
+        LDX #$7F
+        STX $02
+        LDA [$00]
+        cmp wRoutineVariable1,b
+        beq _sibling_found
+        LDA [$00],y
+        cmp wRoutineVariable1,b
+        beq _sibling_found
+        SEC
+        bra _sibling_found_end
+        _sibling_found
+        CLC
+        _sibling_found_end
+        plx
+        stx wRoutineVariable1,b
+        ply
+        rts
+            rlGetSelectedUnitMainParentID ; 84/A40D
+
+                .al
+                .autsiz
+                .databank ?
+
+                phx
+                phy
+                ldx wRoutineVariable1,b
+                phx
+                jsl rlGetSelectedUnitCharacterID
+                sta wRoutineVariable1,b
+
+                lda aChildrenDataOffsets
+                tax
+
+                ldy #0
+
+                -
+                lda aChildrenDataOffsets,x
+                cmp wRoutineVariable1,b
+                beq _Child
+
+                inc x
+                inc x
+                inc y
+                cpy #size(aChildrenDataOffsets)
+                bcc -
+
+                lda #0
+
+                -
+                plx
+                stx wRoutineVariable1,b
+                ply
+                plx
+                rtl
+
+                _Child
+                tya
+                lsr a
+                inc a
+                bra -
+
+                .databank 0
+        rlLoveCheckSiblings
+                phb
+                phk
+                plb
+                phx
+                phy
+                pha
+                lda wRoutineVariable1,b
+                pha
+                stz wRoutineVariable1,b
+                ldy #$2
+                _loop
+                ldx wRoutineVariable1,b
+                Lda aSiblingCritEntryPointers,x;
+                STA $00
+                LDX #$7F
+                STX $02
+                LDA [$00]
+                cmp wRoutineVariable2,b
+                beq _first_version
+                cmp wRoutineVariable3,b
+                beq _second_version
+                bra _end_loop
+                _found
+                sec
+                bra _end
+                _first_version
+                LDA [$00],y
+                cmp wRoutineVariable3,b
+                beq _found
+                bra _end_loop
+                _second_version
+                LDA [$00],y
+                cmp wRoutineVariable3,b
+                beq _found
+                _end_loop
+                inc wRoutineVariable1,b
+                inc wRoutineVariable1,b
+                inc wRoutineVariable1,b
+                lda wRoutineVariable1,b
+                cmp #$45
+                bne _loop
+                CLC
+                _end
+                pla
+                sta wRoutineVariable1,b
+                pla
+                ply
+                plx
+                plb
+                rtl
+
+    .here
+
+        ;* = $11ef2c
+        ;.logical $91ef2c
+        ;rsLoadSaveFileBody ; 91/EF2C
+;
+        ;        .al
+        ;        .autsiz
+        ;        .databank ?
+;
+        ;        phb
+        ;        phk
+        ;        plb
+        ;        lda aSave.wActiveSlot,b
+        ;        jsr rsSetSaveDataOffsets
+        ;        jsl rlUnknown848000
+        ;        jsr rsLoadGeneralSaveData
+        ;        jsr rsLoadFactionHeaderRAMData
+        ;        jsl $87FB5E
+        ;        jsr rsLoadItemRAMData
+        ;        jsr rsLoadChapterLocationData
+        ;        jsr rsLoadChapterEventData
+        ;        jsr rsLoadUnitData
+        ;        plb
+        ;        rts
+;
+        ;        .databank 0
+        ;        .here

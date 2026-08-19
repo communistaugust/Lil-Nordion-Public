@@ -441,6 +441,7 @@
              jsr $91F4C8
              jsr $91EF97
              jsr rsLoadLoverData
+             jsl rlinitialateSiblings
              jsl $87FC51
              plb
              rts
