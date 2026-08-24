@@ -135,12 +135,12 @@ rlSetChildrenPermanentFlags ; 84/BB1E
             pha
             phx
             ldx #0
-            ldy #$1
+            ldy #$2
             _loop
             lda y
             cmp #$05
             beq _nope2
-            cmp #$0A
+            cmp #$06
             beq _nope2
             jsl rlFindCharacterByGenerationID
             jsl rlGetSelectedUnitCharacterID
@@ -247,20 +247,6 @@ rlSetChildrenPermanentFlags ; 84/BB1E
             plb
             rtl
         ; The first few entries are offsets, but it already gets indexed with an offset already.
-
-        rltempTest
-                phb
-                php
-                phk
-                plb
-                .al
-                .autsiz
-                .databank ?
-                  jsl rlinitialateSiblings
-                plp
-                plb
-                rtl
-                .databank 0
 
 .here
 * = $04822d
@@ -408,7 +394,7 @@ rlUnknown8480EC ; 84/80EC
         jsl $87E93F
         jsl $87E952
         jsl $86C548
-        jsl rltempTest
+        jsl rlinitialateSiblings
         pla
         sta wR0
         plx
@@ -561,7 +547,7 @@ rlCheckForSiblingCritUnit ; 87/BCCF
         inc wRoutineVariable2,b
         inc wRoutineVariable2,b
         lda wRoutineVariable2,b
-        cmp #$17
+        cmp #$27
         beq _end
         tax
         bra _loop
@@ -734,3 +720,8 @@ rlCheckForSiblingCritUnit ; 87/BCCF
 ;
         ;        .databank 0
         ;        .here
+
+* = $11F15D
+.logical $11F15D
+.byte 4
+.here
