@@ -1119,6 +1119,7 @@ GUARD_FE4_BASEROM :?= false
  .include "ProjectASM/Love.asm"
  .include "ProjectASM/DELETING4SAVE.asm"
  .include "ProjectASM/OneChild/OneChildASM.asm"
+ .include "ProjectASM/OneChild/NewLove.asm"
  .include "ProjectASM/ParentHair/InheritableHair.asm"
 
         * = $0C77A1

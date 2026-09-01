@@ -144,10 +144,6 @@ rlGayModifyUnitsLovePoints ; 87/FE73
           brl _End
           +
               sta wRoutineVariable3,b ;Second lover
-              jsl rlLoveCheckSiblings
-              bcc +
-               brl _End
-               +
               jsl rlCheckLoversMarried
               ora #0
               beq +
