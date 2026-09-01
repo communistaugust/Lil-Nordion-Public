@@ -1,4 +1,4 @@
-     * = $07FDE0
+     * = $07FE73
               .logical $87FE73
 rlGayModifyUnitsLovePointsOneChildren ; 87/FE73
 
