@@ -1118,3 +1118,5 @@ GUARD_FE4_BASEROM :?= false
  .include "ProjectASM/SaveRewriting.asm"
  .include "ProjectASM/Love.asm"
  .include "ProjectASM/DELETING4SAVE.asm"
+ .include "ProjectASM/OneChild/OneChildASM.asm"
+ .include "ProjectASM/OneChild/NewLove.asm"
