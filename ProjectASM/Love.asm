@@ -145,6 +145,11 @@ rlGayModifyUnitsLovePoints ; 87/FE73
           brl _End
           +
               sta wRoutineVariable3,b ;Second lover
+              jsl rlCheckLoversMarried
+                ora #0
+                beq +
+                    brl _End
+                +
               jsl rlwSelectedUniLovePointer
               lda LoverHeterosexualPoint,x
               and #$01FF
@@ -1241,3 +1246,33 @@ rsChapterEventConditionCommand60
 .logical $8481AD
 JSL rlDeleteLoveandDeleteParentsAndModifyChildrenData
 .here
+
+* = $019960
+.logical $819960
+
+rlCheckLoversMarried
+        .al
+        .autsiz
+        .databank ?
+                phb
+                php
+                phk
+                plb
+                phx
+                ldx wSelectedUnitDataRAMPointer,b
+                phx
+                jsl rlGetSelectedUnitLoverGenerationID
+                ora #0
+                bne _end
+                lda wRoutineVariable3,b
+                jsl rlFindCharacterByGenerationID
+                jsl rlGetSelectedUnitLoverGenerationID
+                _end
+                plx
+                stx wSelectedUnitDataRAMPointer,b
+                plx
+                plp
+                plb
+                rtl
+        .databank 0
+        .here
