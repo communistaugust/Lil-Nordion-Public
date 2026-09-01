@@ -7,7 +7,7 @@ pause
 
 call cd %~dp0Tables\EVENTUNIT
 for %%t in (*.csv) do (
-		python "%c2a%" "%%t" "%%~nt.csv.asm"
+		call python "%c2a%" "%%t" "%%~nt.csv.asm"
 )
 pause
 
