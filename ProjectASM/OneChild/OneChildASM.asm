@@ -146,6 +146,8 @@ rlSetChildrenPermanentFlags ; 84/BB1E
             jsl rlGetSelectedUnitCharacterID
             sta wRoutineVariable3,b
             jsl rlGetSelectedUnitMainParentID
+            cmp #00
+            beq _nope2
             sta wRoutineVariable1,b
             jsl rlGetSelectedUnitFatherID
             sta wRoutineVariable2,b
@@ -425,8 +427,8 @@ rsActionStructCheckForSiblingCrit
         .databank 0
 .here
 
-             * = $07FEFF
-                 .logical $87FEFF
+             * = $07FF10
+                 .logical $07FFF10
        aSiblingCritEntryPointers
 
                .long  aSiblingCritEntry1
@@ -640,58 +642,6 @@ rlCheckForSiblingCritUnit ; 87/BCCF
                 bra -
 
                 .databank 0
-        rlLoveCheckSiblings
-                phb
-                phk
-                plb
-                phx
-                phy
-                pha
-                lda wRoutineVariable1,b
-                pha
-                stz wRoutineVariable1,b
-                ldy #$2
-                _loop
-                ldx wRoutineVariable1,b
-                Lda aSiblingCritEntryPointers,x;
-                STA $00
-                LDX #$7F
-                STX $02
-                LDA [$00]
-                cmp wRoutineVariable2,b
-                beq _first_version
-                cmp wRoutineVariable3,b
-                beq _second_version
-                bra _end_loop
-                _found
-                sec
-                bra _end
-                _first_version
-                LDA [$00],y
-                cmp wRoutineVariable3,b
-                beq _found
-                bra _end_loop
-                _second_version
-                LDA [$00],y
-                cmp wRoutineVariable3,b
-                beq _found
-                _end_loop
-                inc wRoutineVariable1,b
-                inc wRoutineVariable1,b
-                inc wRoutineVariable1,b
-                lda wRoutineVariable1,b
-                cmp #$45
-                bne _loop
-                CLC
-                _end
-                pla
-                sta wRoutineVariable1,b
-                pla
-                ply
-                plx
-                plb
-                rtl
-
     .here
 
         ;* = $11ef2c
@@ -722,6 +672,79 @@ rlCheckForSiblingCritUnit ; 87/BCCF
         ;        .here
 
 * = $11F15D
-.logical $11F15D
-.byte 4
+.logical $91F15D
+.byte 5
+.here
+
+* = $08FE80
+.logical $88FE80
+rlLoveCheckSiblings
+                phb
+                phk
+                plb
+                phx
+                phy
+                pha
+                lda wSelectedUnitDataRAMPointer,b
+                pha
+                lda wRoutineVariable1,b
+                pha
+                lda wRoutineVariable2,b
+                pha
+                jsl rlFindCharacterByGenerationID
+                jsl rlGetSelectedUnitCharacterID
+                sta wRoutineVariable2,b
+                lda wRoutineVariable3,b
+                pha
+                jsl rlFindCharacterByGenerationID
+                jsl rlGetSelectedUnitCharacterID
+                sta wRoutineVariable3,b
+                stz wRoutineVariable1,b
+                ldy #$2
+                _loop
+                ldx wRoutineVariable1,b
+                Lda aSiblingCritEntryPointers,x;
+                STA $00
+                LDX #$7F
+                STX $02
+                LDA [$00]
+                cmp wRoutineVariable2,b
+                beq _first_version
+                cmp wRoutineVariable3,b
+                beq _second_version
+                bra _end_loop
+                _found
+                sec
+                bra _end
+                _first_version
+                LDA [$00],y
+                cmp wRoutineVariable3,b
+                beq _found
+                bra _end_loop
+                _second_version
+                LDA [$00],y
+                cmp wRoutineVariable2,b
+                beq _found
+                _end_loop
+                inc wRoutineVariable1,b
+                inc wRoutineVariable1,b
+                inc wRoutineVariable1,b
+                lda wRoutineVariable1,b
+                cmp #$45
+                bne _loop
+                CLC
+                _end
+                pla
+                sta wRoutineVariable3,b
+                pla
+                sta wRoutineVariable2,b
+                pla
+                sta wRoutineVariable1,b
+                pla
+                sta wSelectedUnitDataRAMPointer,b
+                pla
+                ply
+                plx
+                plb
+                rtl
 .here

@@ -148,6 +148,11 @@ rlGayModifyUnitsLovePoints ; 87/FE73
               bcc +
                brl _End
                +
+              jsl rlCheckLoversMarried
+              ora #0
+              beq +
+                brl _End
+              +
               jsl rlwSelectedUniLovePointer
               lda LoverHeterosexualPoint,x
               and #$01FF
@@ -171,7 +176,7 @@ rlGayModifyUnitsLovePoints ; 87/FE73
                   +
                   lda #500
                   sta LoverHeterosexualPoint,x
-                  jsl $848C31 ;rlSetUnitsAsLoversByGenerationIDs
+                  jsl rlSetUnitsAsLoversByGenerationIDs ;rlSetUnitsAsLoversByGenerationIDs
                   bra _End
                 _Negative
                 lda LoverHeterosexualPoint,x
@@ -991,7 +996,7 @@ rlGetUnitLoveGrowthWithTarget ; 87/AD0E
 
 * = $048C31
 .logical $848C31
-rlSetUnitsAsLoversByGenerationIDs ; 84/8C31
+    rlSetUnitsAsLoversByGenerationIDs ; 84/8C31
 
         .al
         .autsiz
@@ -1243,3 +1248,32 @@ rsChapterEventConditionCommand60
 
 
 
+* = $019960
+.logical $819960
+
+rlCheckLoversMarried
+        .al
+        .autsiz
+        .databank ?
+                phb
+                php
+                phk
+                plb
+                phx
+                ldx wSelectedUnitDataRAMPointer,b
+                phx
+                jsl rlGetSelectedUnitLoverGenerationID
+                ora #0
+                bne _end
+                lda wRoutineVariable3,b
+                jsl rlFindCharacterByGenerationID
+                jsl rlGetSelectedUnitLoverGenerationID
+                _end
+                plx
+                stx wSelectedUnitDataRAMPointer,b
+                plx
+                plp
+                plb
+                rtl
+        .databank 0
+        .here

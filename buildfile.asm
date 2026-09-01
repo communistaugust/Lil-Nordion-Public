@@ -1125,8 +1125,8 @@ GUARD_FE4_BASEROM :?= false
             .logical $CC77A1
             PortraitScatash        .binary "Graphics/Portrait/PortraitInheritableHair/Scatash.4bpp.fe4"
 .here
-        * = $0C7C8A
-            .logical $CC7C8A
+        * = $0C8000
+            .logical $CC8000
             PortraitFebail         .binary "Graphics/Portrait/PortraitInheritableHair/Febail.4bpp.fe4"
             .here
 
@@ -1178,13 +1178,13 @@ GUARD_FE4_BASEROM :?= false
 
             * = $0D2E3C
             .logical $CD2E3C
-                        PortraitTine         .binary "Graphics/Portrait/PortraitInheritableHair/Tine.4bpp.fe4"
+            PortraitTine    .binary "Graphics/Portrait/PortraitInheritableHair/Tine.4bpp.fe4"
 
             .here
 
-            * = $0CD3461
+            * = $0D3461
             .logical $CD3461
-                        PortraitLene         .binary "Graphics/Portrait/PortraitInheritableHair/Lene.4bpp.fe4"
+            PortraitLene         .binary "Graphics/Portrait/PortraitInheritableHair/Lene.4bpp.fe4"
             .here
 
             * = $0D3A0D
@@ -1209,7 +1209,6 @@ GUARD_FE4_BASEROM :?= false
              PalletetTine         .binary "Graphics/Portrait/PortraitInheritableHair/Tine.pal"
              PalletetLene         .binary "Graphics/Portrait/PortraitInheritableHair/Lene.pal"
              PalletetNanna         .binary "Graphics/Portrait/PortraitInheritableHair/Nana.pal"
-
              .here
 * = $05F040
     .logical $C5F040
@@ -1237,4 +1236,11 @@ GUARD_FE4_BASEROM :?= false
     PalleteSylviaHair .binary "Graphics/Portrait/ParentHairPallete/Sylvia.pal"
     PalleteEdainHair .binary "Graphics/Portrait/ParentHairPallete/Edain.pal"
     PalleteBrigidHair .binary "Graphics/Portrait/ParentHairPallete/Brigid.pal"
+    .here
+
+* = $0ab595
+    .logical $8ab595
+    .byte $00
+    .byte $80
+    .byte $CC
     .here

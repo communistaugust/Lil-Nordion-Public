@@ -1,0 +1,25 @@
+.word 0,Offset
+Sigurd,aChildrenData.SigurdNewChildrenDataEntry - aChildrenDataOffsets
+Noish,aChildrenData.NoishNewChildrenDataEntry - aChildrenDataOffsets
+Alec,aChildrenData.AlecNewChildrenDataEntry - aChildrenDataOffsets
+Arden,aChildrenData.AlecNewChildrenDataEntry - aChildrenDataOffsets
+Finn,aChildrenData.FinnNewChildrenDataEntry - aChildrenDataOffsets
+Quan,aChildrenData.QuanNewChildrenDataEntry - aChildrenDataOffsets
+Midir,aChildrenData.MidirNewChildrenDataEntry - aChildrenDataOffsets
+Lewyn,aChildrenData.LewynNewChildrenDataEntry - aChildrenDataOffsets
+Chulainn,aChildrenData.ChulainnNewChildrenDataEntry - aChildrenDataOffsets
+Azelle,aChildrenData.AzelleNewChildrenDataEntry - aChildrenDataOffsets
+Jamke,aChildrenData.JamkeNewChildrenDataEntry - aChildrenDataOffsets
+Claud,aChildrenData.ClaudNewChildrenDataEntry - aChildrenDataOffsets
+Beowolf,aChildrenData.BeowolfNewChildrenDataEntry - aChildrenDataOffsets
+Lex,aChildrenData.LexNewChildrenDataEntry - aChildrenDataOffsets
+Dew,aChildrenData.DewNewChildrenDataEntry - aChildrenDataOffsets
+Deirdre,aChildrenData.DeirdreNewChildrenDataEntry - aChildrenDataOffsets
+Ethlyn,aChildrenData.EthlynNewChildrenDataEntry - aChildrenDataOffsets
+Lachesis,aChildrenData.LachesisNewChildrenDataEntry - aChildrenDataOffsets
+Ayra,aChildrenData.AyraNewChildrenDataEntry - aChildrenDataOffsets
+Erinys,aChildrenData.ErinysNewChildrenDataEntry - aChildrenDataOffsets
+Tailtiu,aChildrenData.TailtiuNewChildrenDataEntry - aChildrenDataOffsets
+Silvia,aChildrenData.SilviaNewChildrenDataEntry - aChildrenDataOffsets
+Edain,aChildrenData.EdainNewChildrenDataEntry - aChildrenDataOffsets
+Brigid,aChildrenData.BrigidNewChildrenDataEntry - aChildrenDataOffsets

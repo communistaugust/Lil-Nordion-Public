@@ -550,7 +550,9 @@
         .structChapterTalkEventEntry Chapter08, FlagChapter08_Seliph_CedHawkTalkCheck, Seliph, Ced
         .structChapterTalkEventEntry Chapter08, FlagChapter08_Seliph_CedHawkTalkCheck, Seliph, Hawk
         .structChapterTalkEventEntry Chapter08, FlagChapter08_PattyDaisy_FebailAsaelloTalkCheck, Patty, Febail
+        .structChapterTalkEventEntry Chapter08, FlagChapter08_PattyDaisy_FebailAsaelloTalkCheck, Patty, Asaello
         .structChapterTalkEventEntry Chapter08, FlagChapter08_PattyDaisy_FebailAsaelloTalkCheck, Daisy, Asaello
+        .structChapterTalkEventEntry Chapter08, FlagChapter08_PattyDaisy_FebailAsaelloTalkCheck, Daisy, Febail
         .word $FFFF
 
       aFactionGroupData2D ; 86/F3B6

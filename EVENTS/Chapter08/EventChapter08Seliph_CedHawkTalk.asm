@@ -53,7 +53,7 @@
     jsl rlGetUnitRAMDataPointerByID
     bcs +
 
-      jsl rlGetSelectedUnitFatherID
+      jsl rlGetSelectedUnitMainParentID
       cmp #Lewyn
       bne +
 

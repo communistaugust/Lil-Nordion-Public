@@ -155,7 +155,7 @@
           EVENT FlagAlways, EventChapter07AresSeliphTalk
 
         CHECK_TALK FlagAlways, Oifey, Shannan
-                EVENT FlagAlways, EventChapter07Shannan_OifeyTalk
+           EVENT FlagAlways, EventChapter07Shannan_OifeyTalk
 
         CHECK_TALK FlagAlways, Leif, Seliph
           EVENT FlagAlways, EventChapter07LeifSeliphTalk
@@ -731,7 +731,9 @@
       aChapter07TalkEvents ; 86/EDD6
 
         .structChapterTalkEventEntry Chapter07, FlagChapter07_ArthurAmid_TineLindaTalkCheck, Arthur, Tine
+        .structChapterTalkEventEntry Chapter07, FlagChapter07_ArthurAmid_TineLindaTalkCheck, Arthur, Linda
         .structChapterTalkEventEntry Chapter07, FlagChapter07_ArthurAmid_TineLindaTalkCheck, Amid, Linda
+        .structChapterTalkEventEntry Chapter07, FlagChapter07_ArthurAmid_TineLindaTalkCheck, Amid, Tine
         .structChapterTalkEventEntry Chapter07, FlagChapter07_DahnaArmyTalkCheck, AnyCharacter, DahnaArmy1
         .word $FFFF
 
