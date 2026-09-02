@@ -10,6 +10,7 @@
       rsEventLoadSpecifiedOrEventUnit1Pointer     :?= address($8692DC)
       rlGetUnitRAMDataPointerByID     :?= address($8484B4)
       rlDeleteParentsAndModifyChildrenData :?= address($8481FF)
+      rlFindCharacterByGenerationID             :?= address($848726)
 
     .endweak
 
