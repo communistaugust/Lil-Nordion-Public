@@ -355,13 +355,11 @@ NOP
 .logical $8481A7
 rlUnknown8480EC ; 84/80EC
 
-        bne +
+        bne _End
 
           jsl $82F866
           jsl rlDeleteLoveandDeleteParentsAndModifyChildrenData
           jsl $8BCE71
-          bra _End
-        +
 
         jsl $87E007
         ora #0
@@ -379,7 +377,7 @@ rlUnknown8480EC ; 84/80EC
             cmp #$7
             beq _81E9
 
-              cmp #$6
+              cmp #$4
               beq +
 
                 cmp #$5
