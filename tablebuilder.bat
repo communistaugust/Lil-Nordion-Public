@@ -15,3 +15,6 @@ for %%t in (*.csv) do (
 )
 pause
 
+cd %~dp0Tables\SPECIAL
+python "%FE4c2a%" "ItemData.csv" "ItemDataHelper.h" "ItemData.csv.asm"
+pause
