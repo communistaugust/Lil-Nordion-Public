@@ -177,7 +177,7 @@ dialoguePrologueWM1
 	.byte $40
 	.byte $20
 
-.text	" Lord Reptor"
+.text	" Duke Reptor"
 	.byte NewLine
 .text	"of House Friege,"
 	.word ClearMapSymbol
@@ -188,7 +188,7 @@ dialoguePrologueWM1
 	.byte NewLine
 .text	"bestowed by his position will wane."
 	.byte WaitForA
-	
+
 	.byte ScrollText
 	.word LoadMapSymbol
 	.byte $74
@@ -198,8 +198,8 @@ dialoguePrologueWM1
 
 .text	"Prompted by such thoughts,"
 	.byte NewLine
-.text	"he has enticed Lord Lombard"
-	
+.text	"he has enticed Duke Lombard"
+
 	.word LoadPortraitWM1
 	.byte 4
 	.word portrait_Lombard3
@@ -211,7 +211,7 @@ dialoguePrologueWM1
 	.word ClearMapSymbol
 	.byte High
 	.byte WaitForA
-	
+
 	.byte NewLine
 .text	"widely infamous for his avarice,"
 	.byte NewLine
@@ -225,12 +225,12 @@ dialoguePrologueWM1
 	.byte NewLine
 .text	"on the current state of affairs."
 	.byte WaitForA
-	
+
 	.word ClearPortraitWM
 	.byte 2
 	.word ClearPortraitWM
 	.byte 4
-	
+
 	.byte ScrollText
 	.word LoadMapSymbol
 	.byte $B4
@@ -244,7 +244,7 @@ dialoguePrologueWM1
 	.byte WaitForA
 	.byte ScrollText
 .text	"Its duke,"
-	
+
 	.word LoadPortraitWM1
 	.byte 2
 	.word portrait_Young_Arvis1
@@ -253,7 +253,7 @@ dialoguePrologueWM1
 	.byte $B8
 	.byte $04
 
-.text	" Lord Arvis, has instead seen to the"
+.text	" Duke Arvis, has instead seen to the"
 	.byte NewLine
 .text	"care of King Ásmundr, "
 	.word ClearMapSymbol
@@ -264,7 +264,7 @@ dialoguePrologueWM1
 	.byte NewLine
 .text	"Belhalla's royal guard in spite of his young age."
 	.byte WaitForA
-	
+
 	.byte ScrollText
 	.word LoadMapSymbol
 	.byte $BE
@@ -272,8 +272,8 @@ dialoguePrologueWM1
 	.byte High
 	.byte Edda
 
-.text	"Only" 
-	
+.text	"Only"
+
 	.word LoadPortraitWM1
 	.byte 4
 	.word portrait_Claud
@@ -288,24 +288,24 @@ dialoguePrologueWM1
 .text	"over the disaster such a status quo"
 	.byte NewLine
 .text	"spells for Grannvale's future."
-	
+
 	.word ClearMapSymbol
 	.byte High
 	.byte WaitForA
-	
+
 	.word ClearPortraitWM
 	.byte 2
 	.word ClearPortraitWM
 	.byte 4
 	.byte ScrollText
-	
+
 .text	"Then suddenly, as tensions continue to boil,"
 	.byte WaitForA
 	.byte NewLine
 .text	"news of a crisis from Grannvale's east"
 	.byte NewLine
 .text	"shatter the kingdom's feigned stability."
-	
+
 	.byte WaitForA
 	.byte ScrollText
 	.byte EndText
@@ -320,25 +320,25 @@ dialoguePrologueWM2
 	.byte RibautToDahna
 	.word PauseText
 	.byte $3C
-	
-	.byte StartText 
-	
+
+	.byte StartText
+
 .text	"Dahna, an allied city of Grannvale's"
 	.byte NewLine
 .text	"located in the Aed Desert,"
 	.byte WaitForA
-	
+
 .text	 " is brutally attacked"
 	.byte NewLine
 .text	"by natives of the Kingdom of Isaach."
-	
+
 	.word PauseText
 	.byte $0A
 	.byte WaitForA
 	.word PauseText
 	.byte $0A
 	.byte ScrollText
-	
+
 .text	"Countless civilians are killed; witnesses of"
 	.byte NewLine
 .text	"the event dub it nothing short of a massacre."
@@ -346,18 +346,18 @@ dialoguePrologueWM2
 	.word PauseText
 	.byte $0A
 	.byte WaitForA
-	
+
 	.word PauseText
 	.byte $0A
 	.word ClearMapSymbol
 	.byte Low
 	.byte ScrollText
 	.byte EndText
-	
+
 dialoguePrologueWM3
-	
-	.byte StartText 
-	
+
+	.byte StartText
+
 .text	"It does not take long for an uproar to arise"
 	.byte NewLine
 .text	"across Grannvale,"
@@ -369,17 +369,17 @@ dialoguePrologueWM3
 .text	" to punish the savages"
 	.byte NewLine
 .text	"for what they have wrought."
-	.byte WaitForA	
+	.byte WaitForA
 	.byte ScrollText
 .text	"Thus, answering their cries,"
 	.byte NewLine
 .text	"the kingdom soon declares war on Isaach."
-	.byte WaitForA	
+	.byte WaitForA
 	.byte ScrollText
 .text	"In place of his father, at the front of"
 	.byte NewLine
 .text	"Grannvale's charge is"
-	
+
 	.word LoadPortraitWM1
 	.byte 2
 	.word portrait_Kurth
@@ -387,7 +387,7 @@ dialoguePrologueWM3
 	.byte 2
 	.byte $98
 	.byte $1C
-	
+
 .text	" Prince Kurth himself,"
 	.byte WaitForA
 	.byte NewLine
@@ -396,9 +396,9 @@ dialoguePrologueWM3
 .text	"kingdom's most elite forces under his command."
 	.byte WaitForA
 	.byte ScrollText
-	
-.text	"As always, Lord Byron"
-	
+
+.text	"As always, Duke Byron"
+
 	.word LoadPortraitWM1
 	.byte 4
 	.word portrait_Byron1
@@ -406,7 +406,7 @@ dialoguePrologueWM3
 	.byte 4
 	.byte $64
 	.byte$48
-	
+
 .text	" can be found"
 	.byte NewLine
 .text	 "at the prince's side,"
@@ -415,70 +415,70 @@ dialoguePrologueWM3
 	.byte NewLine
 .text	"of a true hero in his own right."
 	.byte WaitForA
-	
+
 	.byte ScrollText
 	.word ClearPortraitWM
 	.byte 2
 	.word ClearPortraitWM
 	.byte 4
-	
+
 .text	"And so, once the army's march is underway,"
 	.byte NewLine
-.text	"precious few soldiers are left behind in Grannvale."	
+.text	"precious few soldiers are left behind in Grannvale."
 	.byte WaitForA
 	.byte ScrollText
 .text	"However, the kingdom's history"
 	.byte NewLine
-.text	"of alliances at its borders-"	
+.text	"of alliances at its borders-"
 	.byte WaitForA
 	.byte ScrollText
-	
+
 	.byte EndText
 
 dialoguePrologueWM4
 
-	.byte StartText 
+	.byte StartText
 .text	"Agustria, a coalition of smaller kingdoms"
 	.byte NewLine
 .text	"to the west,"
-	
+
 	.word PauseText
 	.byte $1E
 	.word PauseText
 	.byte $0A
 	.byte WaitForA
-	
+
 	.byte ScrollText
 	.word PauseText
 	.byte $0A
-	
+
 	.word ClearHighlight
 	.word PauseText
 	.byte $0A
-	
+
 	.word PauseText
 	.byte $14
-	
+
 	.byte EndText
 
 dialoguePrologueWM5
-	
+
 	.word PauseText
 	.byte $1E
-	
-	.byte StartText 
+
+	.byte StartText
 .text	"and further south, the Kingdom of Verdane-"
-	
+
 	.word PauseText
 	.byte $0A
 	.byte WaitForA
-	
+
 	.word PauseText
 	.byte $0A
 	.word ClearHighlight
 	.word PauseText
 	.byte $0A
-	
+
 	.byte NewLine
 .text	"stifle any doubts the people have"
 	.byte NewLine
@@ -491,23 +491,23 @@ dialoguePrologueWM5
 
 dialoguePrologueWM6
 
-	.byte StartText 
+	.byte StartText
 .text	"Far too soon, that faith is proven"
 	.byte NewLine
 .text	"to be horribly misplaced."
 	.byte WaitForA
-	
+
 	.byte ScrollText
 	.word LoadMapSymbol
 	.byte $61
 	.byte $3A
 	.byte Low
 	.byte EvansToYngvi
-	
+
 .text	"A massive army erupts from the Kingdom"
 	.byte NewLine
-.text	"of Verdane, led by its very own Prince Munnir." 
-	
+.text	"of Verdane, led by its very own Prince Munnir."
+
 	.word LoadPortraitWM1
 	.byte 6
 	.word portrait_Munnir1
@@ -516,7 +516,7 @@ dialoguePrologueWM6
 	.byte $20
 	.byte $40
 
-	.byte WaitForA	
+	.byte WaitForA
 	.byte ScrollText
 .text	"Completely blindsiding the border's defenses,"
 	.byte NewLine
@@ -525,13 +525,13 @@ dialoguePrologueWM6
 	.byte NewLine
 .text	"and soon lays siege to Castle Yngvi."
 	.byte WaitForA
-	
+
 	.byte ScrollText
 .text	"In the wake of it all, Yngvi’s defense lies solely"
 	.byte NewLine
-.text	"in the hands of the absent Lord Ling’s daughter,"
+.text	"in the hands of the absent Duke Ling’s daughter,"
 	.byte WaitForA
-	
+
 	.word LoadPortraitWM1
 	.byte 2
 	.word portrait_Edain
@@ -539,17 +539,17 @@ dialoguePrologueWM6
 	.byte 2
 	.byte $88
 	.byte $18
-	
+
 	.byte NewLine
 .text	"Lady Edain."
 	.byte WaitForA
 	.byte ScrollText
-	
+
 	.word ClearPortraitWM
 	.byte 2
-	
+
 .text	"Sigurd, a friend of hers since childhood,"
-	
+
 	.word LoadPortraitWM1		; Pushing this one to after one sentence so Edain has time to fade without Sigurd overshadowing her.
 	.byte 4
 	.word portrait_Sigurd
@@ -557,14 +557,14 @@ dialoguePrologueWM6
 	.byte 4
 	.byte $B4
 	.byte $06
-	
+
 	.byte NewLine
 .text	"is on guard at Castle Chalphy,"
 	.byte WaitForA
 	.byte NewLine
 .text	"having been entrusted with Grannvale's defense"
 	.byte NewLine
-.text	"by his father, Lord Byron."
+.text	"by his father, Duke Byron."
 	.byte WaitForA
 	
 	.byte ScrollText
