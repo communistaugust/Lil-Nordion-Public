@@ -77,6 +77,7 @@ GUARD_FE4_BASEROM :?= false
 .include "LIB/SRAM.h"
 .include "LIB/Dialogue.h"
 .include "ProjectASM/WRAMlover.inc"
+.include "ProjectASM/Epilogue/WRAMEpilogue.inc"
 .include "ProjectASM/LoveStruct.h"
  .include "ProjectASM/base_game_def.asm"
   ROM = binary("FE4.sfc")
@@ -1121,6 +1122,7 @@ GUARD_FE4_BASEROM :?= false
  .include "ProjectASM/OneChild/OneChildASM.asm"
  .include "ProjectASM/OneChild/NewLove.asm"
  .include "ProjectASM/ParentHair/InheritableHair.asm"
+ .include "ProjectASM/Epilogue/Epilogue.asm"
 
         * = $0C77A1
             .logical $CC77A1
