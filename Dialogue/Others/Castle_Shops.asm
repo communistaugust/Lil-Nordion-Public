@@ -644,7 +644,7 @@ fortuneteller_records
 	.byte WaitForA
 	.byte EndText
 
-fortuneteller_parents
+fortuneteller_father_mother
 	.byte ClearText
 	.byte StartText
 .text	"Ohh..."
@@ -760,5 +760,45 @@ miscbattle_goldstolenbyenemy
 	.byte WaitForA
 	.byte EndText
 
+fortuneteller_women_man
+	.byte ClearText
+	.byte StartText
+.text	"Ohh..."
+	.byte NewLine
+.text	"Your mother was "
+	.word PrintStoredNameA
+	.byte NewLine
+.text	"and your father was "
+	.word PrintStoredNameB
+.text	"."
+	.byte WaitForA
+	.byte EndText
 
+fortuneteller_women_women
+	.byte ClearText
+	.byte StartText
+.text	"Ohh..."
+	.byte NewLine
+.text	"Your mother was "
+	.word PrintStoredNameA
+	.byte NewLine
+.text	"and your other mother was "
+	.word PrintStoredNameB
+.text	"."
+	.byte WaitForA
+	.byte EndText
+
+fortuneteller_man_man
+	.byte ClearText
+	.byte StartText
+.text	"Ohh..."
+	.byte NewLine
+.text	"Your father was "
+	.word PrintStoredNameA
+	.byte NewLine
+.text	"and your other father was "
+	.word PrintStoredNameB
+.text	"."
+	.byte WaitForA
+	.byte EndText
 .here

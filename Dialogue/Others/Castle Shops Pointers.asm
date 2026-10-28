@@ -122,15 +122,17 @@
 .long fortuneteller_lover_400_500
 .long fortuneteller_lover_married
 .long fortuneteller_lover_less_than_200
-.long fortuneteller_leave	
+.long fortuneteller_leave
 .long fortuneteller_records
-.long fortuneteller_parents
+.long fortuneteller_father_mother
 .long classchange_oifey_under_20
 .long classchange_oifey_promoted
 .long classchange_lewyn_possible
 .long classchange_lewyn_under_20
 .long classchange_lewyn_promoted
-
+.long fortuneteller_women_man
+.long fortuneteller_women_women
+.long fortuneteller_man_man
 .here
 
 ; Misc battle text.

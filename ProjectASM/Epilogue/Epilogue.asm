@@ -112,7 +112,7 @@ rlEvaluateEpilogueEndings ; 82/F8AE
 
           asl a
           tax
-          jsl rlGetSelectedUnitMotherID
+          jsl rlGetSelectedUnitMainParentID
           ora aEpilogueUnitStates,x
           ora #$2000
           sta aEpilogueUnitStates,x
@@ -519,7 +519,7 @@ rsEvaluateEpilogueDialogueIDs ; 82/FBEB
                 tya
                 lsr a
                 clc
-                adc #Deirdre
+                adc #1 ;
                 bra -
 
                 .databank 0
@@ -560,3 +560,51 @@ rsEvaluateEpilogueDialogueIDs ; 82/FBEB
 
                 .databank 0
                 .here
+
+* = $02FCB7
+.logical $82FCB7
+
+      rsGetEpilogueCharactersMarriedState ; 82/FCB7
+
+        .al
+        .autsiz
+        .databank ?
+
+        jmp rsGetEpilogueCharactersWidowedState
+
+        .databank 0
+.here
+
+* = $02FEE2
+.logical $82FEE2
+
+      rsGetEpilogueCharactersWidowedState ; 82/FEE2
+
+        .al
+        .autsiz
+        .databank ?
+
+        ; Input:
+        ; wR0 = CharacterID
+
+        ; Output:
+        ; Z clear if character is married and their partner is dead
+
+        lda wR0
+        asl a
+        tax
+        lda aEpilogueUnitStates,x
+        bit #$2000
+        beq _End
+
+          and #$00FF
+          asl a
+          tax
+          lda aEpilogueUnitStates,x
+          and #$8000
+
+        _End
+        rts
+
+        .databank 0
+.here

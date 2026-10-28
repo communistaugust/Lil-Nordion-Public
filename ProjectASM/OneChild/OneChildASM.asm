@@ -240,6 +240,13 @@ rlSetChildrenPermanentFlags ; 84/BB1E
             sta aSiblingCritEntry10
             lda aCharacterData.EdainCharacterDataEntry.CharacterID
             sta aSiblingCritEntry10+2
+            lda #0
+            ldx #26
+            -
+            sta aSiblingCritEntry11,x
+            dex
+            dex
+            bpl -
             lda wCurrentChapter,b
             cmp #6
             bcc +
@@ -426,7 +433,7 @@ rsActionStructCheckForSiblingCrit
 .here
 
              * = $07FF10
-                 .logical $07FFF10
+                 .logical $87FF10
        aSiblingCritEntryPointers
 
                .long  aSiblingCritEntry1
@@ -527,6 +534,10 @@ rlCheckForSiblingCritUnit ; 87/BCCF
         phx
         ldx wRoutineVariable2,b
         phx
+        ldx $00
+        phx
+        ldx $02
+        phx
         sta wRoutineVariable1,b
         lda #$0
         sta wRoutineVariable2,b
@@ -547,7 +558,7 @@ rlCheckForSiblingCritUnit ; 87/BCCF
         inc wRoutineVariable2,b
         inc wRoutineVariable2,b
         lda wRoutineVariable2,b
-        cmp #$27
+        cmp #$33
         beq _end
         tax
         bra _loop
@@ -557,6 +568,10 @@ rlCheckForSiblingCritUnit ; 87/BCCF
         _end
         lda #$FF
         _end2
+        plx
+        stx $02
+        plx
+        stx $00
         plx
         stx wRoutineVariable2,b
         plx
@@ -687,13 +702,18 @@ rlLoveCheckSiblings
                 pha
                 lda wRoutineVariable1,b
                 pha
+                lda wRoutineVariable3,b
+                pha
                 lda wRoutineVariable2,b
                 pha
+                ldx $00
+                phx
+                ldx $02
+                phx
                 jsl rlFindCharacterByGenerationID
                 jsl rlGetSelectedUnitCharacterID
                 sta wRoutineVariable2,b
                 lda wRoutineVariable3,b
-                pha
                 jsl rlFindCharacterByGenerationID
                 jsl rlGetSelectedUnitCharacterID
                 sta wRoutineVariable3,b
@@ -728,14 +748,18 @@ rlLoveCheckSiblings
                 inc wRoutineVariable1,b
                 inc wRoutineVariable1,b
                 lda wRoutineVariable1,b
-                cmp #$45
+                cmp #$33
                 bne _loop
                 CLC
                 _end
                 pla
-                sta wRoutineVariable3,b
+                sta $02
+                pla
+                sta $00
                 pla
                 sta wRoutineVariable2,b
+                pla
+                sta wRoutineVariable3,b
                 pla
                 sta wRoutineVariable1,b
                 pla
@@ -745,4 +769,54 @@ rlLoveCheckSiblings
                 plx
                 plb
                 rtl
+.here
+* = $0AFBC8
+.logical $8AFBC8
+jsl rlGayParentFortuneteller
+BRA $8AFBE2
+.here
+
+* = $0294EC
+.logical $8294EC
+rlGayParentFortuneteller
+.al
+.autsiz
+.databank ?
+    jsl rlGetSelectedUnitFatherID
+    sta $18A9
+    cmp #16
+    bcc _man
+    JSL rlGetSelectedUnitMotherID
+    sta $18AB
+    cmp #16
+    bcs _women_women
+    LDA $8AFD81
+    STA $25
+    LDA $8AFD80
+    STA $24
+    bra _end
+    _women_women
+    LDA $8AFD84
+    STA $25
+    LDA $8AFD83
+    STA $24
+    bra _end
+    _man
+    JSL rlGetSelectedUnitMotherID
+    sta $18AB
+    cmp #16
+    bcs _man_women
+    LDA $8AFD87
+    STA $25
+    LDA $8AFD86
+    STA $24
+    bra _end
+    _man_women
+    LDA $8AFD6F
+    STA $25
+    LDA $8AFD6E
+    STA $24
+    _end
+    rtl
+.databank 0
 .here

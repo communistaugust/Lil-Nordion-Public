@@ -797,8 +797,6 @@ rlGetUnitLoveGrowthWithTarget ; 87/AD0E
                         jsl rlGetSelectedUnitGenerationID
                         sta wRoutineVariable3,b
                         jsl rlwSelectedUniLovePointer
-                        cpx #0
-                        beq _End
                         lda wR0
                         sta LoverHeterosexualPoint,x
                         _End
@@ -844,7 +842,6 @@ rlGetUnitLoveGrowthWithTarget ; 87/AD0E
                     cmp #$0019
                     bcs _Abort
                     jsl rlwSelectedUniLovePointer
-                    beq _Abort
                     lda LoverHeterosexualPoint,x
                     _End
                     plx
@@ -876,7 +873,7 @@ rlGetUnitLoveGrowthWithTarget ; 87/AD0E
           sta LoverHeterosexualPoint,x
           inx
           inx
-          cpx #$25A
+          cpx #$258
           bcc _loop
           plx
           pla
@@ -918,7 +915,7 @@ rlGetUnitLoveGrowthWithTarget ; 87/AD0E
                               _yeah
                               inx
                               inx
-                              cpx #$25A
+                              cpx #$258
                               bcc _loop
                               plx
                               pla
@@ -1261,7 +1258,7 @@ rlCheckLoversMarried
                 jsl rlGetSelectedUnitLoverGenerationID
                 ora #0
                 bne _end
-                lda wRoutineVariable3,b
+                lda wRoutineVariable2,b
                 jsl rlFindCharacterByGenerationID
                 jsl rlGetSelectedUnitLoverGenerationID
                 _end

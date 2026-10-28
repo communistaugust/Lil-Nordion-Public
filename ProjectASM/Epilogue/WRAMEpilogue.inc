@@ -42,7 +42,7 @@
     ; result | remainder
   aUnknown7FC71A .fill 7 * size(byte)       ; $7FC71A
     ; ?
-  aUnknown7FC721 .fill 24 * size(byte)       ; $7FC721
+  aUnknown7FC721 .fill 9 * size(byte)       ; $7FC721
     ; male lovers gen ids indexed by female gen ids starting with patty
   aUnknown7FC72A .fill (8 + 1) * size(byte) ; $7FC72A
     ; ?
