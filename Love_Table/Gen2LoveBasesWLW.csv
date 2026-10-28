@@ -1,8 +1,8 @@
 .structGen2LoveEntry 0,Daisy,Creidne,Muirne,Julia,Altena,Hermina,Linda,Laylea,Jeanne,Patty,Larcei,Lana,Fee,Tine,Lene,Nanna
 Daisy,-1,0,0,0,-1,0,0,0,0,-1,0,0,0,0,0,0
 Creidne,,-1,0,0,-1,0,0,0,0,0,-1,0,0,0,0,0
-Muirne,,,-1,0,-1,0,0,0,0,0,0,-1,0,0,0,0
-Julia,,,,-1,-1,0,0,0,0,0,0,0,0,0,0,0
+Muirne,,,-1,10,-1,0,0,0,0,0,0,-1,0,0,0,0
+Julia,,,,-1,-1,0,0,0,0,0,0,10,0,0,0,0
 Altena,,,,,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
 Hermina,,,,,,-1,0,0,0,0,0,0,-1,0,0,0
 Linda,,,,,,,-1,0,0,0,0,0,0,-1,0,0
