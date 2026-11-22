@@ -59,7 +59,7 @@
     .autsiz
     .databank ?
 
-    jsl $9EEFF1
+    jsl $514600
     jsl rlCreateProcHaltEvent
     rtl
 
